@@ -1,3 +1,7 @@
+<!--- 
+Home Page 
+Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,13 +9,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Dela Rosa, Novkovic">
 <meta name="description" content="Landing page for our recipe db">      
-<title>Starting Page</title>
+<title>Home: SimpleEats</title>
 
+<!-- We used bootstrap for the navigation bar at
+   https://getbootstrap.com/docs/4.0/components/navbar/ -->
 <link rel='stylesheet' href="styles.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
 <body>
+<!-- Navigation Bar: 
+   https://getbootstrap.com/docs/4.0/components/navbar/ -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class='navbar-brand'>SimpleEats</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -54,33 +62,41 @@
     <!-- Always remember to call the above files first before calling the bootstrap.min.js file -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
+    <!-- Code we created for the jumbotron which features our top rated recipe on the website 
+    -->
     <div class="jtron">
         <div class="jtron-image">
           <img id="ex" src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?webp=true&quality=90&resize=620%2C563" alt="Chorizo Mozarella Gnocchi Bake">
-          <h4>Chorizo Mozarella Gnocchi Bake</h4>
+          <h4>Chorizo Mozarella Gnocchi Bake</h4> <!--- Recipe Acquired From: https://www.bbcgoodfood.com/recipes/chorizo-mozzarella-gnocchi-bake-->
         </div>
         <div class="jtron-text">
-          <h1>Lorem Ipsum</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In metus vulputate eu scelerisque felis imperdiet. Id venenatis a condimentum vitae sapien pellentesque habitant. Imperdiet massa tincidunt nunc pulvinar sapien. Nisl nunc mi ipsum faucibus vitae aliquet nec ullamcorper. Molestie at elementum eu facilisis sed odio morbi quis commodo. Eget sit amet tellus cras adipiscing. Sem nulla pharetra diam sit amet. Sapien pellentesque habitant morbi tristique senectus et netus. Sed lectus vestibulum mattis ullamcorper velit. Mauris augue neque gravida in fermentum et. Ut ornare lectus sit amet est. Scelerisque mauris pellentesque pulvinar pellentesque habitant morbi.</p>
-          <p>Pharetra magna ac placerat vestibulum lectus mauris ultrices. Bibendum at varius vel pharetra vel turpis nunc eget lorem. Cras pulvinar mattis nunc sed blandit libero volutpat. Amet consectetur adipiscing elit duis tristique sollicitudin nibh. Eget dolor morbi non arcu risus quis varius quam quisque. Sed vulputate odio ut enim blandit volutpat maecenas volutpat. Turpis egestas integer eget aliquet nibh praesent tristique magna sit. Aliquet nec ullamcorper sit amet risus nullam eget felis. In hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Faucibus in ornare quam viverra orci sagittis eu volutpat. Lectus magna fringilla urna porttitor rhoncus dolor purus non. Adipiscing commodo elit at imperdiet dui accumsan sit amet nulla. Nibh tellus molestie nunc non blandit massa enim nec. Sed ullamcorper morbi tincidunt ornare massa eget egestas purus. Sem nulla pharetra diam sit amet nisl suscipit adipiscing. Facilisi morbi tempus iaculis urna id. Tellus molestie nunc non blandit massa enim. In metus vulputate eu scelerisque felis imperdiet proin.</p>
+          <h1>Top-Rated Recipe</h1>
+          <p>This tasty, yet simple top-Rated recipe features delciious ingredients, creating the perfect dish for the whole family.</p>
+          <input type="submit" value="View Recipe" class="btn" /> <!--- need to fix button -->
         </div>
       </div>
+
+      <!-- Trending now section: place for people to find trending recipies people are loving currently, easy access to the user since it's the first thing they see -->
       <div class="trending">
         <h1>Trending Now!</h1>
         <div id='popular' class='row'>
           <div class='col-sm'>
             <h2>Tuscan Chicken Skillet</h2>
             <img src='https://food.fnr.sndimg.com/content/dam/images/food/fullset/2018/9/26/0/FNK_Tuscan-Chicken-Skillet_H2_s4x3.jpg.rend.hgtvcom.826.620.suffix/1537973085542.jpeg'>
+            <input type="submit" value="View Recipe" class="btn" /> <!--- need to fix button -->
           </div>
           <div class='col-sm'>
             <h2>Blueberry Coffee Cake Muffins</h2>
             <img src='https://food.fnr.sndimg.com/content/dam/images/food/fullset/2006/9/12/0/ig0706_muffins.jpg.rend.hgtvcom.966.725.suffix/1449692683261.jpeg'>
+            <input type="submit" value="View Recipe" class="btn" /> <!--- need to fix button -->
           </div>
           <div class='col-sm'>
             <h2>Oven-baked Salmon</h2>
             <img src='https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/7/26/1/CN1B01_oven-baked-salmon_s4x3.jpg.rend.hgtvcom.966.725.suffix/1382545141944.jpeg'>
+            <input type="submit" value="View Recipe" class="btn" /> <!--- need to fix button -->
           </div>
         </div>
       </div>
+    
 
 </body>
