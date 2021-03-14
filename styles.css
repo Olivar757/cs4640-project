@@ -1,13 +1,30 @@
 .nav {
-    
+    background-color: #ffb563;
+
+}
+.nav ul{
+    margin-top:0px;
+    margin-bottom:0px;
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
 
 .nav a{
-    
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 18px;
+}
+
+.dropdown-menu, .dropdown-menu:hover{
+    background: #A6A867 !important;
 }
 
 body {
-    background-color: #ffd29d;
+    background: #ffd29d !important;
+}
+
+nav {
+    background: #A6A867 !important;
 }
 
 .jtron {
@@ -43,6 +60,27 @@ body {
     display:flex;
 }
 
-.jtron-image p {
-    text-align:center;
+.jtron-image h4 {
+    text-align:center !important;
+}
+
+.trending{
+    margin-left:5vw;
+    margin-right:5vw;
+}
+
+.trending h2, p {
+    text-align: center;
+}
+
+.trending img {
+    max-width: 50%;
+    margin-left: auto;
+    margin-right:auto;
+    display:flex;
+    padding-bottom: 2vh;
+}
+
+#popular {
+    border: solid 1px;
 }
