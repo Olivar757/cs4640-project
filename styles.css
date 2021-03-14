@@ -76,6 +76,7 @@ nav {
 .trending{
     margin-left:5vw;
     margin-right:5vw;
+    margin-bottom: 5vh;
 }
 
 .trending h1 {
@@ -106,4 +107,8 @@ nav {
 
 input:hover {
     background-color: #A6A867; 
+}
+
+.trending input {
+    margin-bottom: 3vh;
 }
