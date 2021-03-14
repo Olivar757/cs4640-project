@@ -1,5 +1,5 @@
 .nav {
-    background-color: #ffb563;
+    background-color: #A6A867;
 
 }
 .nav ul{
@@ -21,6 +21,7 @@
 
 body {
     background: #ffd29d !important;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
 }
 
 nav {
@@ -35,20 +36,28 @@ nav {
 .jtron-image{
     width:30%;
     float:left;
-    border-right: solid 1px; 
+    /* border-right: solid 1px;  */
     border-top: solid 1px;
     border-bottom:solid 1px;
+    background-color:#FFDBB0;
 }
 
 .jtron-text {
     width:70%;
     float:right;
+    text-align: left;
     border-top: solid 1px;
     border-bottom: solid 1px;
+    background-color: #FFDBB0;
 }
 
-.jtron-text p, h1{
-    margin-left: 10px;
+.jtron-text p, .jtron-text h1, .jtron-text input{
+    margin-left: 7.5vw;
+    text-align: left !important;
+}
+
+.jtron-text input {
+    display:flex;
 }
 
 .jtron-image img {
@@ -69,6 +78,10 @@ nav {
     margin-right:5vw;
 }
 
+.trending h1 {
+    margin-left: 0
+}
+
 .trending h2, p {
     text-align: center;
 }
@@ -81,6 +94,16 @@ nav {
     padding-bottom: 2vh;
 }
 
+.trending input {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #popular {
     border: solid 1px;
+}
+
+input:hover {
+    background-color: #A6A867; 
 }
