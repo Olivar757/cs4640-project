@@ -1,0 +1,48 @@
+.nav {
+    
+}
+
+.nav a{
+    
+}
+
+body {
+    background-color: #ffd29d;
+}
+
+.jtron {
+    overflow: hidden;
+    display: flex;
+}
+
+.jtron-image{
+    width:30%;
+    float:left;
+    border-right: solid 1px; 
+    border-top: solid 1px;
+    border-bottom:solid 1px;
+}
+
+.jtron-text {
+    width:70%;
+    float:right;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+}
+
+.jtron-text p, h1{
+    margin-left: 10px;
+}
+
+.jtron-image img {
+    max-width:75%;  
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left:auto;
+    margin-right:auto;
+    display:flex;
+}
+
+.jtron-image p {
+    text-align:center;
+}
