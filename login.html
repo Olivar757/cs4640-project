@@ -28,8 +28,8 @@ Allows the user to log in to the site -->
     <a class='navbar-brand'>SimpleEats</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class='navbar-nav mr-auto'>
-            <li class='nav-item active'>
-                <a class='nav-link' href='#'>Home<span class='sr-only'>(current)</span></a>
+            <li class='nav-item'>
+                <a class='nav-link' href='home.html'>Home<span class='sr-only'>(current)</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,7 +44,7 @@ Allows the user to log in to the site -->
                   <a class="dropdown-item" href="#">Dessert</a>
                 </div>
               </li>
-            <li class='nav-item'>
+            <li class='nav-item active'>
                 <a class='nav-link' href='#'>Login</a>
             </li>
             <li class='nav-item'>
@@ -68,16 +68,21 @@ Allows the user to log in to the site -->
 
   
  <!---Log in form where the user enters their username and password-->
-  <div>  
-    <h2>Welcome Back!</h2>
-    <form action="destination-component" method="request-method">
-     
-      Username: <input type="text" name="name" required /> <br/>
-      Password: <input type="password" name="pwd" required /> <br/>
-      <input type="submit" value="Submit" class="btn btn-secondary" />
-    </form>
+    
+    <div class='r'>    
+        <div class='column'id='form'>
+        <h2>Welcome Back!</h2>
+        <form action="destination-component" method="request-method">
+        
+            Username: <br><input type="text" name="name" required /> <br/>
+            Password: <br><input type="password" name="pwd" required /> <br/>
+            <input id='sbtn' type="submit" value="Log in" class="btn btn-secondary" />
+        </form>
+        </div>
+        <div class='column'>
+            <img id='cooking' src='https://iconiclife.com/wp-content/uploads/2020/03/take-a-class-from-a-virtual-cooking-school.jpg'>
+        </div>
   </div>
-  
 
     
 </body>

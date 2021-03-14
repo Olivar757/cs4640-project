@@ -58,6 +58,7 @@ nav {
 
 .jtron-text input {
     display:flex;
+    margin-bottom: 3vh;
 }
 
 .jtron-image img {
@@ -105,10 +106,48 @@ nav {
     border: solid 1px;
 }
 
-input:hover {
+.trending input:hover, .jtron-text input:hover {
     background-color: #A6A867; 
 }
 
 .trending input {
     margin-bottom: 3vh;
+}
+
+#sbtn {
+    margin-top: 2vh;
+    color:black;
+    background-color: white;
+    border: none;
+}
+
+#sbtn:hover{
+    background-color:#A6A867;
+}
+
+.login {
+    margin-left:15vw;
+    margin-top:3vh;
+}
+
+#cooking {
+    /* -webkit-clip-path: polygon(0 0, 0 100px, 100px 80px, 100px 0); */
+    /* max-width: 50%; */
+    height: 90%;
+    float:right;
+    clip-path: polygon(30% 0, 60% 100%, 100% 100%, 100% 0);
+    object-fit: cover;
+}
+
+.r{
+    display:flex;
+}
+
+.column {
+    width:50%;
+}
+
+#form{
+    padding-left: 25%;
+    margin-top: 12.5%;
 }
