@@ -1,6 +1,6 @@
 <!--- 
 Recipe page, showing top rated recipe 
-Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
+Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 
 <!DOCTYPE html>
 <html>
@@ -103,6 +103,7 @@ Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 
     </div>
 
+    <!-- Functions for favoriting and printing out the recipe -->
     <script>
         function favorite(){
             var x = document.getElementById("heart");
@@ -137,6 +138,7 @@ Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
         </p>
     </div>
 
+    <!-- Functions to allow users to change the amount of the recipe they want. Updates ingredients as well. -->
     <script>
         document.getElementById('portionhalf').addEventListener("click", portionfunchalf);
         document.getElementById('portion1').addEventListener("click", portionfuncone);
@@ -254,6 +256,7 @@ Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 
     <div class='comments' id='csection'></div>
 
+    <!-- Script for the comment section. Not fully implemented as it needs a database to store comments and such -->
     <script>
         function comment(){
             if(document.getElementById('comment').value == ""){
