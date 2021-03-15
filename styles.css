@@ -163,6 +163,8 @@ nav {
 
 .column {
     width:50%;
+    overflow: hidden;
+
 }
 
 #form{
