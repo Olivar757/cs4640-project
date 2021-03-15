@@ -90,10 +90,11 @@ nav {
 
 .trending img {
     max-width: 50%;
-    margin-left: auto;
-    margin-right:auto;
     display:flex;
     padding-bottom: 2vh;
+    justify-content: center;
+    margin-right:auto;
+    margin-left:auto;
 }
 
 .trending input {
@@ -104,7 +105,20 @@ nav {
 
 #popular {
     border: solid 1px;
+    display:flex;
+    overflow-x: auto;
+    width: 100%;
+    height: 40%;
+    margin-right:auto;
+    margin-left:auto;
+    scroll-snap-type: mandatory;
 }
+
+.carousel-recipe {
+    flex-shrink:0;
+    width:40%;
+}
+
 
 .trending input:hover, .jtron-text input:hover {
     background-color: #A6A867; 
@@ -156,11 +170,11 @@ nav {
     text-align: left !important;
 }
 
-.header a{
+.header a, #commentbtn{
     color:#A6A867;
 }
 
-.header a:hover{
+.header a:hover, #commentbtn:hover{
     color: rgba(0,0,0,.7);
     text-decoration: none;
 }
@@ -170,7 +184,7 @@ nav {
     margin-right: 7.5vw;
 }
 
-.ingredients p, .instructions p {
+.ingredients p, .instructions p, .comment {
     border: solid 1px;
     padding-left: 2vw;
     padding-top: 2vh;
@@ -186,4 +200,27 @@ nav {
 
 .info {
     margin-left:0 !important;
+}
+
+.functions h4:hover, #commentbtn {
+    color:#A6A867;
+    cursor: pointer;
+}
+
+.comment {
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    padding-bottom: 3vh;
+}
+
+.timeposted {
+    float:right;
+    margin-right: 1vw;
+    margin-bottom: 5vh;
+    display:flex;
+}
+
+.commentSection {
+    margin-left: 7.5vw;
+    margin-right: 7.5vw;
 }

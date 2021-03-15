@@ -30,7 +30,7 @@ Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class='navbar-nav mr-auto'>
                 <li class='nav-item active'>
-                    <a class='nav-link' href='#'>Home<span class='sr-only'>(current)</span></a>
+                    <a class='nav-link' href='home.html'>Home<span class='sr-only'>(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,7 +46,7 @@ Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
                     </div>
                   </li>
                 <li class='nav-item'>
-                    <a class='nav-link' href='#'>Login</a>
+                    <a class='nav-link' href='login.html'>Login</a>
                 </li>
                 <li class='nav-item'>
                     <a class='nav-link' href='#'>Contact Us</a>
@@ -69,7 +69,7 @@ Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 
    <!-- Class for the recipe header with the name of the recipe and the contributer, as well as the photo of the recipe-->
     <div class="recipe header">
-        <h1>Shakshuka</h1>
+        <h1>Shakshuka <p id='heart' style='display:none;'>&hearts;</p></h1>
         <h3>Recipe Created By: <a href="https://downshiftology.com/recipes/shakshuka/"> Lisa Bryan </a> </h3>
     </div>
     
@@ -85,32 +85,142 @@ Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
         <h4> Estimated Prep Time: 20 minutes </h4>
         <h4> Estimated Total Time: 30 minutes </h4>
         <h4> Servings: 6 </h4>
+        <h4> Change portion</h4>
+        <div class="portionbuttons">
+            <input class='btn' type="button" value="0.5" id="portionhalf">
+            <input class='btn' type="button" value="1" id="portion1">
+            <input class='btn' type="button" value="2" id="portion2">
+            <input class='btn' type="button" value="3" id="portion3">
+        </div>
+        
     </div>
 </div>
 
     <!-- Class for the recipe page functions, such as favorite and print/download-->
     <div class="recipe functions"> 
-        <h4> Favorite </h4>
-        <h4> Print/Download Recipe </h4>
+        <h4 onclick="favorite()"> <a>Favorite</a></h4>
+        <h4 onclick="prnt()"> Print/Download Recipe </h4>
 
     </div>
 
+    <script>
+        function favorite(){
+            var x = document.getElementById("heart");
+            x.style.display === "none" ? x.style.display = "inline" : x.style.display = "none";
+        }
+        function prnt(){
+            window.print();
+        }
+        
+        // document.getElementById("portion").addEventListener("input", portion);
+        
+        // let psize = document.getElementById("portion");
+        // psize.addEventListener('click', portion)
+
+        
+    </script>
+
     <!-- Class for the recipe ingredients-->
-    <div class="recipe ingredients"> 
+    <div class="recipe ingredients" id="ingredients"> 
         <h3> Ingredients: </h3>
         <p> 1 medium onion, diced <br/>
         1 red bell pepper, seeded and diced  <br/>
         4 garlic cloves, finely chopped  <br/>
         2 tsp paprika  <br/>
         1 tsp cumin  <br/>
-        1/4 tsp chili powder  <br/>
+        0.25 tsp chili powder  <br/>
         1 28-ounce can whole peeled tomatoes  <br/>
         6 large eggs  <br/>
-        salt and pepper, to taste  <br/>
+        Salt and pepper, to taste  <br/>
         1 small bunch fresh cilantro, chopped  <br/>
         1 small bunch fresh parsley, chopped  <br/>
         </p>
     </div>
+
+    <script>
+        document.getElementById('portionhalf').addEventListener("click", portionfunchalf);
+        document.getElementById('portion1').addEventListener("click", portionfuncone);
+        document.getElementById('portion2').addEventListener("click", portionfunctwo);
+        document.getElementById('portion3').addEventListener("click", portionfuncthree);
+        var onion = 1.0;
+        var bpepper = 1.0;
+        var garlic = 4.0;
+        var paprika = 2.0;
+        var cumin = 1.0;
+        var cpowder = 1/4;
+        var tomatoes = 1.0;
+        var eggs = 6.0;
+        var cilantro = 1.0;
+        var parsley = 1.0;
+        function portionfunchalf() {//couldn't figure out how to add an event listener to multiple buttons and pass it args based on what button was pressed. Ended up just copying the function four times to get it to work. Considering improving this in the future
+            // console.log("running portion...");
+            // console.log(serving);
+            var serving = 0.5;
+            var temponion = onion * serving;
+            var tempbpepper = bpepper * serving;
+            var tempgarlic = garlic * serving;
+            var temppaprika = paprika * serving;
+            var tempcumin = cumin * serving;
+            var tempcpowder = cpowder * serving;
+            var temptomatoes = tomatoes * serving;
+            var tempeggs = eggs * serving;
+            var tempcilantro = cilantro * serving;
+            var tempparsley = parsley * serving;
+            console.log(parsley);
+            document.getElementById("ingredients").innerHTML = '<h3> Ingredients: </h3><p>' + temponion + " medium onion, diced <br/>" + tempbpepper + " red bell pepper, seeded and diced  <br/>" + tempgarlic + " garlic cloves, finely chopped  <br/>" + temppaprika + " tsp paprika  <br/>" + tempcumin + " tsp cumin  <br/>" + tempcpowder + " tsp chili powder  <br/>" + temptomatoes + " 28-ounce can whole peeled tomatoes  <br/>" + tempeggs + " large eggs  <br/>" + "Salt and pepper, to taste  <br/>" + tempcilantro + " small bunch fresh cilantro, chopped  <br/>" + tempparsley + " small bunch fresh parsley, chopped  <br/></p>";
+    }
+    function portionfuncone(){
+        // console.log("running portion...");
+        // console.log(serving);
+        var serving = 1;
+        var temponion = onion * serving;
+        var tempbpepper = bpepper * serving;
+        var tempgarlic = garlic * serving;
+        var temppaprika = paprika * serving;
+        var tempcumin = cumin * serving;
+        var tempcpowder = cpowder * serving;
+        var temptomatoes = tomatoes * serving;
+        var tempeggs = eggs * serving;
+        var tempcilantro = cilantro * serving;
+        var tempparsley = parsley * serving;
+        console.log(parsley);
+        document.getElementById("ingredients").innerHTML = '<h3> Ingredients: </h3><p>' + temponion + " medium onion, diced <br/>" + tempbpepper + " red bell pepper, seeded and diced  <br/>" + tempgarlic + " garlic cloves, finely chopped  <br/>" + temppaprika + " tsp paprika  <br/>" + tempcumin + " tsp cumin  <br/>" + tempcpowder + " tsp chili powder  <br/>" + temptomatoes + " 28-ounce can whole peeled tomatoes  <br/>" + tempeggs + " large eggs  <br/>" + "Salt and pepper, to taste  <br/>" + tempcilantro + " small bunch fresh cilantro, chopped  <br/>" + tempparsley + " small bunch fresh parsley, chopped  <br/></p>";
+    }
+    function portionfunctwo(){
+        // console.log("running portion...");
+        // console.log(serving);
+        var serving = 2;
+        var temponion = onion * serving;
+        var tempbpepper = bpepper * serving;
+        var tempgarlic = garlic * serving;
+        var temppaprika = paprika * serving;
+        var tempcumin = cumin * serving;
+        var tempcpowder = cpowder * serving;
+        var temptomatoes = tomatoes * serving;
+        var tempeggs = eggs * serving;
+        var tempcilantro = cilantro * serving;
+        var tempparsley = parsley * serving;
+        console.log(parsley);
+        document.getElementById("ingredients").innerHTML = '<h3> Ingredients: </h3><p>' + temponion + " medium onion, diced <br/>" + tempbpepper + " red bell pepper, seeded and diced  <br/>" + tempgarlic + " garlic cloves, finely chopped  <br/>" + temppaprika + " tsp paprika  <br/>" + tempcumin + " tsp cumin  <br/>" + tempcpowder + " tsp chili powder  <br/>" + temptomatoes + " 28-ounce can whole peeled tomatoes  <br/>" + tempeggs + " large eggs  <br/>" + "Salt and pepper, to taste  <br/>" + tempcilantro + " small bunch fresh cilantro, chopped  <br/>" + tempparsley + " small bunch fresh parsley, chopped  <br/></p>";
+    }
+    function portionfuncthree(){
+        // console.log("running portion...");
+        // console.log(serving);
+        var serving = 3;
+        var temponion = onion * serving;
+        var tempbpepper = bpepper * serving;
+        var tempgarlic = garlic * serving;
+        var temppaprika = paprika * serving;
+        var tempcumin = cumin * serving;
+        var tempcpowder = cpowder * serving;
+        var temptomatoes = tomatoes * serving;
+        var tempeggs = eggs * serving;
+        var tempcilantro = cilantro * serving;
+        var tempparsley = parsley * serving;
+        console.log(parsley);
+        document.getElementById("ingredients").innerHTML = '<h3> Ingredients: </h3><p>' + temponion + " medium onion, diced <br/>" + tempbpepper + " red bell pepper, seeded and diced  <br/>" + tempgarlic + " garlic cloves, finely chopped  <br/>" + temppaprika + " tsp paprika  <br/>" + tempcumin + " tsp cumin  <br/>" + tempcpowder + " tsp chili powder  <br/>" + temptomatoes + " 28-ounce can whole peeled tomatoes  <br/>" + tempeggs + " large eggs  <br/>" + "Salt and pepper, to taste  <br/>" + tempcilantro + " small bunch fresh cilantro, chopped  <br/>" + tempparsley + " small bunch fresh parsley, chopped  <br/></p>";
+    }
+    </script>
 
       <!-- Class for the recipe instructions-->
     <div class="recipe instructions "> 
@@ -125,19 +235,65 @@ Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
     </div>
 
     <!-- Comment section, code acquired from POTD4 with modifications-->
-    <div class="comment section"> 
-        <h3> Leave a Comment!</h3>
-        <form action="destination-component" method="request-method">
+    <div class="comment comment-form"> 
+        <h3> Leave a comment!</h3>
+        <form>
             <label>First Name: </label>
-            <input type="text" name="fname" autofocus /> <br/>
+            <input type="text" name="fname" id='first'/> <br/>
             <label>Last Name:</label>
-            <input type="text" name="lname" /> <br/>
+            <input type="text" name="lname" id='last'/> <br/>
             <label>Comment: </label>
-            <textarea rows="5" cols="40" name="comment"></textarea> <br/>
+            <textarea id='comment' rows="5" cols="40" name="comment"></textarea> <br/>
              
-            <input id='sbtn' type="submit" value="Submit" class="btn" />
+            <!-- <input id='sbtn' type="submit" value="Submit" class="btn" onsubmit="comment()"/> -->
+            <h4 id='commentbtn' onclick="comment()">Comment</h4>
           </form>
     </div>
 
+    <h3 class='commentSection'>Comments from others:</h3>  
+
+    <div class='comments' id='csection'></div>
+
+    <script>
+        function comment(){
+            if(document.getElementById('comment').value == ""){
+                alert("You have to type something in order to leave a comment!");
+                return;
+            }
+            const commentSection = document.createElement('div');
+            commentSection.className = 'comment';
+            const submittedComment = document.createTextNode(document.getElementById("comment").value);
+            const label = document.createElement("h4");
+            var name = 'Anonymous said:';
+            if(document.getElementById('first').value == ''){
+                label.innerText = name;    
+                commentSection.appendChild(label);
+            }
+            else{
+                name = document.getElementById('first').value + " " + document.getElementById('last').value + " said:";
+                label.innerText = name;
+                commentSection.appendChild(label);
+            }
+            commentSection.appendChild(submittedComment);
+            commentSection.appendChild(document.createElement("br"));
+            var d = new Date();
+            var year = d.getFullYear();
+            var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            var m = months[d.getMonth()];
+            var day = d.getDate();
+            var hr = d.getHours();
+            var min = d.getMinutes();
+            console.log(day);
+            if (min < 10) {
+                min = "0" + min;
+            }
+            const time = document.createElement("p");
+            time.innerText = hr + ":" + min + " on " + m + " " + day + " " + year;
+            time.className = "timeposted";
+            commentSection.appendChild(time);
+            const currentDiv = document.getElementById("csection");
+            document.body.insertBefore(commentSection, currentDiv);
+        }
+    </script>
 
 </body>
