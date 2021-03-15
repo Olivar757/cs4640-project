@@ -67,18 +67,60 @@ Allows the user to log in to the site -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
 
   
- <!---Log in form where the user enters their username and password-->
-    
+ <!---Log in form where the user enters their username and password
+validation code obtained from validate-form-1.html activity 3/02-->
     <div class='r'>    
         <div class='column'id='form'>
         <h2>Welcome Back!</h2>
-        <form action="destination-component" method="request-method">
-        
-            Username: <br><input type="text" name="name" required  autofocus/> <br/>
-            Password: <br><input type="password" name="pwd" required /> <br/>
+        <form action="destination-component" method="post" onsubmit="return validateLogIn()">
+            <div class ="form-group"> 
+                <!--- js autofocus on the username box so there are less clicks for the user-->
+                Username:<input type="text" id="username" class="form-control"  autofocus placeholder="Enter Your Username"/>
+            </div>
+            <div class ="form-group"> 
+                Password:<input type="password" id="password" class="form-control" placeholder="Enter Your Password"/>
+            </div>
+            
             <input id='sbtn' type="submit" value="Log in" class="btn btn-secondary" />
         </form>
+        <!-- sign up button, will link to a registration page in future implementation-->
+        <input id='sbtn' type="submit" value="Sign Up" class="btn btn-secondary" />
         </div>
+
+<!-- script that validates the log in information
+validation code obtained from validate-form-1.html activity 3/02-->
+<script> 
+function validateLogIn() {
+
+var username = document.getElementById("username")
+if(username.value.length <=0) //if the length of the username is less than or equal to 0 then there is no username entered 
+{
+    alert ("Please Enter Username"); //display alert message that username must be entered
+    return false; 
+}
+// this is what I was thinking? and then you would hardcode the username and password? 
+//I'm not sure 
+//else if (username != "username" & password != "password") { 
+  //  alert ("Incorrect Username or Password")
+   // return  false; 
+//}
+
+var password = document.getElementById("password") //if the length of the password is less than or equal to 0 then there is no password entered 
+if(password.value.length <=0) 
+{
+    alert ("Please Enter Password"); //display alert message that password must be entered
+    return false; 
+}
+}
+
+</script>
+
+
+
+
+
+
+        <!-- Cooking photo with diagonal split for aesthetic component -->
         <div class='column'>
             <img id='cooking' src='https://iconiclife.com/wp-content/uploads/2020/03/take-a-class-from-a-virtual-cooking-school.jpg'>
         </div>
