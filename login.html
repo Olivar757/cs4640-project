@@ -69,10 +69,12 @@ Allows the user to log in to the site -->
   
  <!---Log in form where the user enters their username and password
 validation code obtained from validate-form-1.html activity 3/02-->
+
+
     <div class='r'>    
         <div class='column'id='form'>
         <h2>Welcome Back!</h2>
-        <form action="destination-component" method="post" onsubmit="return validateLogIn()">
+        <form action='/cs4640/home.html' method="post" onsubmit="return validateLogIn()">
             <div class ="form-group"> 
                 <!--- js autofocus on the username box so there are less clicks for the user-->
                 Username:<input type="text" id="username" class="form-control"  autofocus placeholder="Enter Your Username"/>
@@ -92,25 +94,33 @@ validation code obtained from validate-form-1.html activity 3/02-->
 <script> 
 function validateLogIn() {
 
-var username = document.getElementById("username")
-if(username.value.length <=0) //if the length of the username is less than or equal to 0 then there is no username entered 
-{
-    alert ("Please Enter Username"); //display alert message that username must be entered
-    return false; 
-}
-// this is what I was thinking? and then you would hardcode the username and password? 
-//I'm not sure 
-//else if (username != "username" & password != "password") { 
-  //  alert ("Incorrect Username or Password")
-   // return  false; 
-//}
-
-var password = document.getElementById("password") //if the length of the password is less than or equal to 0 then there is no password entered 
-if(password.value.length <=0) 
-{
-    alert ("Please Enter Password"); //display alert message that password must be entered
-    return false; 
-}
+    var tempuser = "a";
+    var temppwd = "b";
+    var username = document.getElementById("username");
+    var password = document.getElementById("password"); //if the length of the password is less than or equal to 0 then there is no password entered 
+    console.log(username + " " + password);
+    console.log(tempuser + " " + temppwd);
+    if(username.value.length <=0 && password.value.length <=0) //if the length of the username is less than or equal to 0 then there is no username entered 
+    {
+        alert ("Please enter a username and password."); //display alert message that username/password must be entered
+        return false;
+    }
+    else if(username.value.length <= 0){
+        alert("Please enter a username.");
+        return false;
+    }
+    else if(password.value.length <= 0){
+        alert("Please enter a password.");
+        return false;
+    }
+    else if(username.value != tempuser || password.value != temppwd){ //in the final product, these statements will instead evaluate username and pwd combos in a database
+        alert("The username or password you've entered is incorrect.");
+        
+    }
+    else if(username.value == tempuser && password.value == temppwd){
+        window.location.href = "recipe.html";//this will be replaced by the appropriate page (i.e. my account or something)
+        return false;
+    }
 }
 
 </script>
