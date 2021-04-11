@@ -38,6 +38,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
                 $err = "Password should include one number.";
                 echo "need digit";
             }
+            elseif(strlen($pwd)<8) $err = "Password must be at least 8 characters long.";
         }
         else $err = "You need to enter a password.";
 
