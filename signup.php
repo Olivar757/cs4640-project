@@ -1,6 +1,37 @@
 <!--- 
-Home Page 
+Signup Page 
 Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
+
+<?php
+    require('connectdb.php');
+    require('account_db.php');
+
+    $username = 'bb';
+    $pwd = '';
+    $fname = '';
+    $lname = '';
+    $email = '';
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+        $username = $_POST['username'];
+        $pwd = $_POST['password'];
+        $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
+        $email = $_POST['email'];
+
+        $hash = htmlspecialchars($pwd); 
+        $hash = crypt($hash, "web4640");
+
+        if(isset($_POST['submit'])){
+            addAccount($username, $hash);
+            addAccountInfo($username, $fname, $lname, $email);
+        }
+    }
+
+
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -65,25 +96,58 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
     <div class='r'>    
         <div class='column'id='form'>
         <h2>Create Your Account!</h2>
-        <form method="post" onsubmit="return validateLogIn()">
-            <div class ="form-group"> 
-                <!--- js autofocus on the username box so there are less clicks for the user-->
-                Username:<input type="text" id="username" class="form-control"  autofocus placeholder="Enter Your Username"/>
+        <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>" method='post'>
+            <div class="form-row">
+                <div class="col">
+                    Username:<input type="text" name="username" class="form-control"  autofocus placeholder="Enter Your Username" required/>
+                </div>
+                <div class="col">
+                    Password:<input type="password" name="password" class="form-control" placeholder="Enter Your Password" required/>
+                </div>
             </div>
-            <div class ="form-group"> 
-                Password:<input type="password" id="password" class="form-control" placeholder="Enter Your Password"/>
+            <div class="form-row">
+                <div class="col">
+                    First Name: <input type="text" name="fname" class='form-control' placeholder="Enter Your First Name" required>
+                </div>
+                <div class="col">
+                    Last Name: <input type="text" name="lname" class='form-control' placeholder="Enter Your Last Name" required>
+                </div>
             </div>
-            
-            <input id='sbtn' type="submit" value="Sign Up" class="btn btn-secondary" />
+            <div class="form-row">
+                <div class="col">
+                    Email: <input type="email" name="email" class='form-control' placeholder="Enter Your Email" required>
+                </div>
+            </div>
+            <input id='sbtn' name="submit" type="submit" value="Sign Up" class="btn btn-secondary" />
         </form>
-        <!-- <script>
-            function myfunction(){
-                location.href="signup.html";
-            }
-        </script> -->
         </div>
         <div class='column'>
             <img id='cooking' src='https://iconiclife.com/wp-content/uploads/2020/03/take-a-class-from-a-virtual-cooking-school.jpg'>
         </div>
     </div>
+
+    <script> 
+        function validateSignUp() {
+            u = username.value.length <= 0;
+            p = password.value.length <= 0;
+            f = fname.value.length <= 0;
+            l = lname.value.length <= 0;
+            e = email.value.length <= 0;
+            if(u || p || f || l || e) //if the length of the username is less than or equal to 0 then there is no username entered 
+            {
+                alert ("Please fill the missing field(s)."); //display alert message that username/password must be entered
+                return false;
+            }
+            else if(username.value != tempuser || password.value != temppwd){ //in the final product, these statements will instead evaluate username and pwd combos in a database
+                alert("The username or password you've entered is incorrect.");
+                
+            }
+            else if(username.value == tempuser && password.value == temppwd){
+                window.location.href = "recipe.html";//this will be replaced by the appropriate page (i.e. my account or something)
+                return false;
+            }
+        }
+        
+        </script>
+
 </body>
