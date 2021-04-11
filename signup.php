@@ -38,7 +38,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Dela Rosa, Novkovic">
 <meta name="description" content="Landing page for our recipe db">      
-<title>Home: SimpleEats</title>
+<title>Sign Up</title>
 
 <!--Link to our stylesheet we created-->
 <link rel='stylesheet' href="styles.css">
