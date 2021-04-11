@@ -39,7 +39,7 @@ function addAccount($username, $passwrd){
   function validate_login($username, $password){
     global $db;
   
-    $query = "SELECT accounts.password FROM accounts WHERE accounts.user =:username";
+    $query = "SELECT accounts.passwrd FROM accounts WHERE accounts.user =:username";
     $statement = $db->prepare($query);
     $statement->bindValue(':username', $username);
     $statement->execute(); // run query

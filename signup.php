@@ -21,35 +21,34 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
         $email = $_POST['email'];
 
         if($pwd != ""){
-            $uppercase = preg_match('@[A-Z]@', $password);
-            $lowercase = preg_match('@[a-z]@', $password);
-            $number    = preg_match('@[0-9]@', $password);
-            if(!preg_match('@[A-Z]@', $password)){
-                $err = "Password should be at least 8 characters in length and should include at least one upper case letter, and one number.";
-                $err_code = 1;
+            $uppercase = preg_match('@[A-Z]@', $pwd);
+            $lowercase = preg_match('@[a-z]@', $pwd);
+            $number    = preg_match('@[0-9]@', $pwd);
+            if(!preg_match('/[A-Z]/', $pwd)){
+                $code = 1;
+                $err = "Password should include at least one upper case letter.";
             }
-            elseif(!preg_match('@[a-z]@', $password)){
-                $err = "Password should be at least 8 characters in length and should include at least one upper case letter, and one number.";
-                $err_code = 2;
+            elseif(!preg_match('/[a-z]/', $pwd)){
+                $code = 2;
+                $err = "Password should include at least one lower case letter.";
+                // echo "need lower";
             }
-            elseif(preg_match('@[0-9]@', $password)){
-                $err = "Password should be at least 8 characters in length and should include at least one upper case letter, and one number.";
-                $err_code = 3;
+            elseif(!preg_match('/\d/', $pwd)){
+                $code = 3;
+                $err = "Password should include one number.";
+                echo "need digit";
             }
         }
-
-        // if( ){
-
-        // }
+        else $err = "You need to enter a password.";
 
         $hash = htmlspecialchars($pwd); 
         $hash = crypt($hash, "web4640");
 
         if(isset($_POST['submit'])){
-            addAccount($username, $hash);
-            addAccountInfo($username, $email, $fname, $lname);
             if(!isset($err)){
-               header("Location: login.php");
+                addAccount($username, $hash);
+                addAccountInfo($username, $email, $fname, $lname);
+                header("Location: login.php");
             }
         }
     }
@@ -147,8 +146,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
         <img id='cooking' src='https://iconiclife.com/wp-content/uploads/2020/03/take-a-class-from-a-virtual-cooking-school.jpg'>
     </div>
     <!-- Validate password strength -->
-    <?php if(isset($err)){echo "<script>alert('Password should be at least 8 characters in length and should include at least one upper case letter, and one number.')</script>" ;}?>
-
+    <?php if(isset($err)){echo "<script>alert('$err')</script>";$err = null; unset($err);}?>
     
 
     <script> 
@@ -159,7 +157,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
             var l = document.getElementById("lname").value;
             var e = document.getElementById("email").value;
 
-            if(u == null || p == null || f == null || l == null || e.length == null) //if the length of the username is less than or equal to 0 then there is no username entered 
+            if(u == "" || p == "" || f == "" || l == "" || e == "") //if the length of the username is less than or equal to 0 then there is no username entered 
             {
                 alert ("Please fill the missing field(s)."); //display alert message that username/password must be entered
                 return false;
@@ -169,3 +167,4 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
         </script>
     </div>
 </body>
+

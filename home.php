@@ -30,7 +30,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class='navbar-nav mr-auto'>
                 <li class='nav-item active'>
-                    <a class='nav-link' href='.php'>Home<span class='sr-only'>(current)</span></a>
+                    <a class='nav-link' href='home.php'>Home<span class='sr-only'>(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

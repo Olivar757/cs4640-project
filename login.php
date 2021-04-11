@@ -2,6 +2,33 @@
 Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef) 
 Allows the user to log in to the site -->
 
+<!--- php server side validation WIP ---> 
+
+<?php
+    require('connectdb.php');
+    require('account_db.php');
+    session_start();
+
+    $username = "";
+    $password = "";
+    $mainpage = "signup.php"; 
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        if (!empty($_POST['submit'])) {
+            
+            if($_POST['submit'] == 'username'){
+                if(validate_login($username, $password) == 1){
+                    $_SESSION["user"]=$username;
+                    header("Location:recipes.php");
+                }
+            }   
+        } 
+    }  
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +72,7 @@ Allows the user to log in to the site -->
                 </div>
               </li>
             <li class='nav-item active'>
-                <a class='nav-link' href='#'>Login</a>
+                <a class='nav-link' href='login.php'>Login</a>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='#'>Contact Us</a>
@@ -129,39 +156,6 @@ function validateLogIn() {
 }
 
 </script>
-
-<!--- php server side validation WIP ---> 
-
-<?php
-    require('connectdb.php');
-    require('account_db.php');
-    session_start();
-
-    $username = "";
-    $password = "";
-    $mainpage = "signup.php"; 
-
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-
-        if (!empty($_POST['submit'])) {
-            
-            if($_POST['submit'] == 'username'){
-                if(validate_student_password($username, $password) == 1){
-                    $_SESSION["user"]=$username;
-                    header("Location:recipes.php");
-                   // echo "<span class='msg'>Username and password match our record</span> <br/>";
-                }
-            }   
-        } 
-}  
-
-?>
-
-
-
-
 
         <!-- Cooking photo with diagonal split for aesthetic component -->
         <div class='column'>
