@@ -20,13 +20,37 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
         $lname = $_POST['lname'];
         $email = $_POST['email'];
 
+        if($pwd != ""){
+            $uppercase = preg_match('@[A-Z]@', $password);
+            $lowercase = preg_match('@[a-z]@', $password);
+            $number    = preg_match('@[0-9]@', $password);
+            if(!preg_match('@[A-Z]@', $password)){
+                $err = "Password should be at least 8 characters in length and should include at least one upper case letter, and one number.";
+                $err_code = 1;
+            }
+            elseif(!preg_match('@[a-z]@', $password)){
+                $err = "Password should be at least 8 characters in length and should include at least one upper case letter, and one number.";
+                $err_code = 2;
+            }
+            elseif(preg_match('@[0-9]@', $password)){
+                $err = "Password should be at least 8 characters in length and should include at least one upper case letter, and one number.";
+                $err_code = 3;
+            }
+        }
+
+        // if( ){
+
+        // }
+
         $hash = htmlspecialchars($pwd); 
         $hash = crypt($hash, "web4640");
 
         if(isset($_POST['submit'])){
             addAccount($username, $hash);
             addAccountInfo($username, $email, $fname, $lname);
-            header("Location: login.php");
+            if(!isset($err)){
+               header("Location: login.php");
+            }
         }
     }
 ?>
@@ -119,9 +143,12 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
             <input id='sbtn' name="submit" type="submit" value="Sign Up" class="btn btn-secondary" />
         </form>
     </div> 
-        <div class='column'>
-            <img id='cooking' src='https://iconiclife.com/wp-content/uploads/2020/03/take-a-class-from-a-virtual-cooking-school.jpg'>
-        </div>
+    <div class='column'>
+        <img id='cooking' src='https://iconiclife.com/wp-content/uploads/2020/03/take-a-class-from-a-virtual-cooking-school.jpg'>
+    </div>
+    <!-- Validate password strength -->
+    <?php if(isset($err)){echo "<script>alert('Password should be at least 8 characters in length and should include at least one upper case letter, and one number.')</script>" ;}?>
+
     
 
     <script> 
@@ -137,18 +164,6 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
                 alert ("Please fill the missing field(s)."); //display alert message that username/password must be entered
                 return false;
             }
-
-            // Validate password strength
-            var password = document.getElementById("password").value;
-            var uppercase = /[A-Z]/.test(password);
-            var lowercase = /[a-z]/.test(password);
-            var number = /[0-9]/.test(password);
-
-            if(!uppercase || !lowercase || !number || password.length < 8) {
-                alert("Password should be at least 8 characters in length and should include at least one upper case letter, and one number.");
-                return false;
-            }
-
         }
         
         </script>

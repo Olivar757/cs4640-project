@@ -36,4 +36,24 @@ function addAccount($username, $passwrd){
     
   }
 
+  function validate_login($username, $password){
+    global $db;
+  
+    $query = "SELECT accounts.password FROM accounts WHERE accounts.user =:username";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':username', $username);
+    $statement->execute(); // run query
+    $results = $statement->fetchAll();
+    $statement->closeCursor(); //release hold on this connection
+    
+    if(sizeof($results) > 0 ){
+      if(strcmp($results[0],$password) == 0){
+        return 1;
+      }
+    }
+    else{
+      return 0;
+    }
+  }
+
 ?>
