@@ -21,7 +21,7 @@ function addAccount($username, $passwrd){
     
     global $db;
   
-    $query = "CREATE TABLE IF NOT EXISTS `account_info` ( `user` VARCHAR(15) NOT NULL , `passwrd` VARCHAR(30) NOT NULL )";
+    $query = "CREATE TABLE IF NOT EXISTS `account_info` ( `user` VARCHAR(15) NOT NULL , `email` VARCHAR(30) NOT NULL , `fname` VARCHAR(30) NOT NULL , `lname` VARCHAR(30) NOT NULL )";
     $statement = $db->prepare($query);
     $statement->execute();
     $statement->closeCursor();
