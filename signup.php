@@ -25,7 +25,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 
         if(isset($_POST['submit'])){
             addAccount($username, $hash);
-            addAccountInfo($username, $fname, $lname, $email);
+            addAccountInfo($username, $email, $fname, $lname);
             header("Location: login.php");
         }
     }
