@@ -1,3 +1,6 @@
+<!-- Add, remove from favorites DB 
+Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef) 
+ -->
 <?php 
 
 function addToFavorite($sid, $listingID)
