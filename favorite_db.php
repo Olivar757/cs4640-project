@@ -3,14 +3,14 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
  -->
 <?php 
 
-function addToFavorite($sid, $listingID)
+function addToFavorite($username, $recipeID)
 {
 
   global $db;
-  $query = "INSERT INTO Favorite VALUES(:sid, :listingID)";
+  $query = "INSERT INTO Favorite VALUES(:username, :recipeID)";
   $statement = $db->prepare($query);
-  $statement->bindValue(':sid', $sid);
-  $statement->bindValue(':listingID', $listingID);
+  $statement->bindValue(':username', $username);
+  $statement->bindValue(':recipeID', $recipeID);
   $statement->execute();
 
   $results = $statement->fetchAll(); // returns an array of rows
@@ -19,14 +19,14 @@ function addToFavorite($sid, $listingID)
 }
 
 
-function removeFavorite($sid, $listingID)
+function removeFavorite($username, $recipeID)
 {
 
   global $db;
-  $query = "DELETE FROM Favorite WHERE sid=:sid AND listingID=:listingID";
+  $query = "DELETE FROM Favorite WHERE username=:username AND recipeID=:recipeID";
   $statement = $db->prepare($query);
-  $statement->bindValue(':sid', $sid);
-  $statement->bindValue(':listingID', $listingID);
+  $statement->bindValue(':username', $username);
+  $statement->bindValue(':recipeID', $recipeID);
   $statement->execute();
 
   $results = $statement->fetchAll(); // returns an array of rows
@@ -35,14 +35,14 @@ function removeFavorite($sid, $listingID)
 	
 }
 
-function checkFavorite($sid, $listingID)
+function checkFavorite($username, $recipeID)
 {
 
   global $db;
-  $query = "SELECT * FROM Favorite WHERE sid=:sid AND listingID=:listingID";
+  $query = "SELECT * FROM Favorite WHERE username=:username AND recipeID=:recipeID";
   $statement = $db->prepare($query);
-  $statement->bindValue(':sid', $sid);
-  $statement->bindValue(':listingID', $listingID);
+  $statement->bindValue(':username', $username);
+  $statement->bindValue(':recipeID', $recipeID);
   $statement->execute();
 
   $results = $statement->fetchAll(); // returns an array of rows
