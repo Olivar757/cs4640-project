@@ -26,7 +26,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
         if(isset($_POST['submit'])){
             addAccount($username, $hash);
             addAccountInfo($username, $fname, $lname, $email);
-            header("Location: login.html");
+            header("Location: login.php");
         }
     }
 ?>
@@ -59,7 +59,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
             <ul class='navbar-nav mr-auto'>
                 <li class='nav-item active'>
-                    <a class='nav-link' href='home.html'>Home<span class='sr-only'>(current)</span></a>
+                    <a class='nav-link' href='home.php'>Home<span class='sr-only'>(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -75,7 +75,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
                     </div>
                   </li>
                 <li class='nav-item'>
-                    <a class='nav-link' href='login.html'>Login</a>
+                    <a class='nav-link' href='login.php'>Login</a>
                 </li>
                 <li class='nav-item'>
                     <a class='nav-link' href='#'>Contact Us</a>
