@@ -6,7 +6,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
     require('connectdb.php');
     require('account_db.php');
 
-    $username = 'bb';
+    $username = '';
     $pwd = '';
     $fname = '';
     $lname = '';
@@ -26,11 +26,9 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
         if(isset($_POST['submit'])){
             addAccount($username, $hash);
             addAccountInfo($username, $fname, $lname, $email);
+            header("Location: login.html");
         }
     }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -96,58 +94,63 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
     <div class='r'>    
         <div class='column'id='form'>
         <h2>Create Your Account!</h2>
-        <form method="post" action="<?php $_SERVER['PHP_SELF'] ?>" method='post'>
-            <div class="form-row">
+        <form method="post" onsubmit="return validateSignUp()">
+        <div class="form-row">
                 <div class="col">
-                    Username:<input type="text" name="username" class="form-control"  autofocus placeholder="Enter Your Username" required/>
+                    Username:<input type="text" name="username" id="username" class="form-control"  autofocus placeholder="Enter Your Username"/>
                 </div>
                 <div class="col">
-                    Password:<input type="password" name="password" class="form-control" placeholder="Enter Your Password" required/>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col">
-                    First Name: <input type="text" name="fname" class='form-control' placeholder="Enter Your First Name" required>
-                </div>
-                <div class="col">
-                    Last Name: <input type="text" name="lname" class='form-control' placeholder="Enter Your Last Name" required>
+                    Password:<input type="password" name="password" id="password" class="form-control" placeholder="Enter Your Password"/>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col">
-                    Email: <input type="email" name="email" class='form-control' placeholder="Enter Your Email" required>
+                    First Name: <input type="text" name="fname" id="fname" class='form-control' placeholder="Enter Your First Name">
+                </div>
+                <div class="col">
+                    Last Name: <input type="text" name="lname" id="lname" class='form-control' placeholder="Enter Your Last Name">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    Email: <input type="email" name="email" id="email" class='form-control' placeholder="Enter Your Email">
                 </div>
             </div>
             <input id='sbtn' name="submit" type="submit" value="Sign Up" class="btn btn-secondary" />
         </form>
-        </div>
+    </div> 
         <div class='column'>
             <img id='cooking' src='https://iconiclife.com/wp-content/uploads/2020/03/take-a-class-from-a-virtual-cooking-school.jpg'>
         </div>
-    </div>
+    
 
     <script> 
         function validateSignUp() {
-            u = username.value.length <= 0;
-            p = password.value.length <= 0;
-            f = fname.value.length <= 0;
-            l = lname.value.length <= 0;
-            e = email.value.length <= 0;
-            if(u || p || f || l || e) //if the length of the username is less than or equal to 0 then there is no username entered 
+            var u = document.getElementById("username").value;
+            var p = document.getElementById("password").value;
+            var f = document.getElementById("fname").value;
+            var l = document.getElementById("lname").value;
+            var e = document.getElementById("email").value;
+
+            if(u == null || p == null || f == null || l == null || e.length == null) //if the length of the username is less than or equal to 0 then there is no username entered 
             {
                 alert ("Please fill the missing field(s)."); //display alert message that username/password must be entered
                 return false;
             }
-            else if(username.value != tempuser || password.value != temppwd){ //in the final product, these statements will instead evaluate username and pwd combos in a database
-                alert("The username or password you've entered is incorrect.");
-                
-            }
-            else if(username.value == tempuser && password.value == temppwd){
-                window.location.href = "recipe.html";//this will be replaced by the appropriate page (i.e. my account or something)
+
+            // Validate password strength
+            var password = document.getElementById("password").value;
+            var uppercase = /[A-Z]/.test(password);
+            var lowercase = /[a-z]/.test(password);
+            var number = /[0-9]/.test(password);
+
+            if(!uppercase || !lowercase || !number || password.length < 8) {
+                alert("Password should be at least 8 characters in length and should include at least one upper case letter, and one number.");
                 return false;
             }
+
         }
         
         </script>
-
+    </div>
 </body>

@@ -99,7 +99,6 @@ validation code obtained from validate-form-1.html activity 3/02-->
 validation code obtained from validate-form-1.html activity 3/02-->
 <script> 
 function validateLogIn() {
-
     var tempuser = "a"; //temporary user and pwd to showcase barebones validation
     var temppwd = "b";
     var username = document.getElementById("username");
@@ -121,7 +120,7 @@ function validateLogIn() {
     }
     else if(username.value != tempuser || password.value != temppwd){ //in the final product, these statements will instead evaluate username and pwd combos in a database
         alert("The username or password you've entered is incorrect.");
-        
+        return false;
     }
     else if(username.value == tempuser && password.value == temppwd){
         window.location.href = "recipe.html";//this will be replaced by the appropriate page (i.e. my account or something)
