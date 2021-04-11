@@ -130,6 +130,34 @@ function validateLogIn() {
 
 </script>
 
+<!--- php server side validation WIP ---> 
+
+<?php
+    require('connectdb.php');
+    require('account_db.php');
+    session_start();
+
+    $username = "";
+    $password = "";
+    $mainpage = "signup.php"; 
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        if (!empty($_POST['submit'])) {
+            
+            if($_POST['submit'] == 'username'){
+                if(validate_student_password($username, $password) == 1){
+                    $_SESSION["user"]=$username;
+                    header("Location:recipes.php");
+                   // echo "<span class='msg'>Username and password match our record</span> <br/>";
+                }
+            }   
+        } 
+}  
+
+?>
 
 
 
