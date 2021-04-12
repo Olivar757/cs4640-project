@@ -4,7 +4,12 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
 
 <?php
     require('connectdb.php');
+    require('account_db.php');
     session_start();
+    echo $_SESSION['user'] . "<br>";
+    $info = getMyInfo($_SESSION['user']);
+    if(isset($info)) echo "info set";
+    else echo "info not set";
 ?>
 
 <!DOCTYPE html>
@@ -27,9 +32,9 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
 		<div name='info' style='width: 80%;display:block;margin:auto;border-bottom-style:solid;padding-bottom:5vh;'>
 			<img style='border-radius:25px;margin-right:2.5vw;' class='profile_pic' src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSZVLlHlKrUYXoD_kgc2VHr7qRiQppYqYAeNw&usqp=CAU" alt="Your profile photo here!">
 			<div class='align-middle' name='basic_info' style='margin:auto;display: inline-block;margin-bottom:10vh;'>
-				<h5>Full Name: Name here</h5>
-				<h5>Email: Email here</h5>
-                <input type="submit" id='sbtn'value="View Recipe" class="btn btn-secondary" onclick="window.location.href='addrecipe.php'"/>			</div>
+				<h5>Full Name: <?php echo $info[0]['fname'] . " " . $info[0]['lname']?></h5>
+				<h5>Email: <?php echo $info[0]['email']?></h5>
+                <input type="submit" id='sbtn'value="Add a recipe" class="btn btn-secondary" onclick="window.location.href='add_recipe.php'"/></div>
 		</div>
         <div class="container" style='width: 80%;max-width:85%;border-bottom-style:solid;padding-bottom:5vh;'>
             <h2>My Recipes</h2>

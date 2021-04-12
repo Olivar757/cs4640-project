@@ -22,7 +22,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 
     <!-- Class for the recipe header with the name of the recipe and the contributer, as well as the photo of the recipe-->
     <div class="recipe header">
-        <h1>Shakshuka <p id='heart' style='display:none;'>&hearts;</p></h1>
+        <h1>Shakshuka <p id='heart' style='display:none;color:red;'>&hearts;</p></h1>
         <h3>Recipe Created By: <a href="https://downshiftology.com/recipes/shakshuka/"> Lisa Bryan </a> </h3>
     </div>
     

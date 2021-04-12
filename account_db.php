@@ -38,9 +38,7 @@ function addAccount($username, $passwrd){
 
   function validate_login($username, $password){
     global $db;
-  
-    echo $username . "<br>";
-    echo $password . "<br>";
+
     $query = "SELECT accounts.passwrd FROM accounts WHERE accounts.user =:username";
     $statement = $db->prepare($query);
     $statement->bindValue(':username', $username);
@@ -59,5 +57,30 @@ function addAccount($username, $passwrd){
       return 0;
     }
   }
+
+  function getMyInfo($username){
+    global $db;
+
+    $query = "SELECT * FROM account_info WHERE account_info.user =:username";
+    $statement = $db->prepare($query);
+    $statement->bindvalue(':username', $username);
+    $statement->execute();
+    $results = $statement->fetchAll();
+    $statement->closeCursor();
+
+    return $results;
+  }
+
+  function myInfo($username){
+	global $db;
+	$query = "SELECT * FROM accounts_info WHERE user=:username";
+	$statement = $db->prepare($query); //make an executable version
+	$statement->bindValue(':username', $username);
+	$statement->execute();
+	$results = $statement->fetchAll(); //returns an array of all rows from the result that we execute
+	$statement->closeCursor();
+
+	return $results; 
+}
 
 ?>
