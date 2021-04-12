@@ -8,8 +8,6 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
     session_start();
     echo $_SESSION['user'] . "<br>";
     $info = getMyInfo($_SESSION['user']);
-    if(isset($info)) echo "info set";
-    else echo "info not set";
 ?>
 
 <!DOCTYPE html>
@@ -42,21 +40,19 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
         <div class="container" style='width: 80%;max-width:85%;border-bottom-style:solid;padding-bottom:5vh;'>
             <h2>My Favorites</h2>
             <div class="container"> <!-- here would be where we access the favorites and display them -->
-                <div class="row">
-                    <div class="col">fav #1</div>
-                    <div class="col">fav #2</div>
-                </div>
-                <div class="row">
-                    <div class="col">fav #3</div>
-                    <div class="col">fav #4</div>
-                </div>
-                <div class="row">
-                    <div class="col">fav #5</div>
-                    <div class="col">fav #6</div>
-                </div>
-                <div class="row">
-                    <div class="col">fav #7</div>
-                    <div class="col">fav #8</div>
+                <div class="container">
+                    <form name="mainForm" action="recipe.php" method="post" style='display:inline-block;'>
+                        <!-- <input type="hidden" value="<?php echo $p['listingID'] ?>" /> -->
+                        <input id='recBtn' type="submit" value="View Recipe!" name="action" class='btn btn-primary' style='margin-top: 10px;background-color: #84DCC6; border-color: #84DCC6;color:#000;'/>
+                    </form>
+                    <form action="#" method="post" style='display:inline-block'>
+                        <input id='recBtn' type="submit" value="Edit" name="action" class="btn btn-primary" title="Update the record" style='margin-top:10px;margin-right:15px;color:black;background-color:#84DCC6;border-color:#84DCC6;'/>
+                        <input type="hidden" name="updateRecipe" value="php echo recipe id here" />
+                    </form>
+                    <form id='recBtn' style='display:inline-block;' action="php server server self here" method="post">
+                        <input type="submit" value="Delete" name="action" class="btn btn-danger" title="Permanently delete the record" style='color:black;margin-top:10px;'/>
+                        <input type="hidden" name="delRecipe" value="php echo recipe id here" />
+                    </form>
                 </div>
             </div>
         </div>
