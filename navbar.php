@@ -1,6 +1,5 @@
 <?php
   require('connectdb.php');
-  session_start();
 ?>
 
 <!--Link to our stylesheet we created-->

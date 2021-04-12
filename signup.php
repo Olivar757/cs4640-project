@@ -5,6 +5,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 <?php
     require('connectdb.php');
     require('account_db.php');
+    session_start();
 
     $username = '';
     $pwd = '';
