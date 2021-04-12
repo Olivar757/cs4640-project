@@ -4,6 +4,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 
 <?php
     require('connectdb.php');
+    session_start();
 ?>
 
 <!DOCTYPE html>

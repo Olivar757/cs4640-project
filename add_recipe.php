@@ -4,7 +4,7 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
 
 <?php
 require('connectdb.php');
-require('property_db.php');
+require('recipe_db.php');
 session_start();
 
 ?>

@@ -3,8 +3,10 @@ session_start();
 require('connectdb.php');
 
 unset($_SESSION['username']);
+unset($_SESSION['loggedbool']);
 session_destroy();
-
+session_start();
+$_SESSION['loggedbool'] = "Login";
 
 ?>
 

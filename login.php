@@ -25,8 +25,10 @@ Allows the user to log in to the site -->
                 $_SESSION["user"]=$username;
                 $_SESSION['loggedbool'] = "Account";
                 header("Location:home.php");
-            
             }   
+            else{
+                $err = "Your username or password does not match any accounts in our database.";
+            }
         } 
         if(isset($_SESSION['user'])){
             echo "user is " . $_SESSION['user'];
@@ -117,7 +119,7 @@ function validateLogIn() {
             <img id='cooking' src='https://iconiclife.com/wp-content/uploads/2020/03/take-a-class-from-a-virtual-cooking-school.jpg'>
         </div>
   </div>
-
+  <?php if(isset($err)){echo "<script>alert('$err')</script>";$err = null; unset($err);}?>
     
 </body>
 </html>
