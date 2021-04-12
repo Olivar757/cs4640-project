@@ -39,6 +39,8 @@ function addAccount($username, $passwrd){
   function validate_login($username, $password){
     global $db;
   
+    echo $username . "<br>";
+    echo $password . "<br>";
     $query = "SELECT accounts.passwrd FROM accounts WHERE accounts.user =:username";
     $statement = $db->prepare($query);
     $statement->bindValue(':username', $username);
@@ -47,7 +49,9 @@ function addAccount($username, $passwrd){
     $statement->closeCursor(); //release hold on this connection
     
     if(sizeof($results) > 0 ){
-      if(strcmp($results[0],$password) == 0){
+      $hash = htmlspecialchars($password); 
+      $hash = crypt($hash, "web4640");
+      if(strcmp($hash, crypt($password, $hash)) === 0){
         return 1;
       }
     }

@@ -3,7 +3,16 @@ Home Page
 Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 
 <?php 
+  require('connectdb.php');
   session_start();
+  if(!isset($_SESSION['loggedbool'])) $_SESSION['loggedbool'] = "Login";
+  if(isset($_SESSION['user'])){
+    echo $_SESSION['user'] . "<br>";
+    $_SESSION['loggedbool'] = "Account";
+  }
+  else
+    echo "Not logged in";
+  echo $_SESSION['loggedbool'];
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +28,6 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 <body>
 
   <?php include 'navbar.php' ?>
-
     <!-- Code we created for the jumbotron which features our top rated recipe on the website 
     -->
     <div class="jtron">

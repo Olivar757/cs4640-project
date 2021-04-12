@@ -2,6 +2,10 @@
 Recipe page, showing top rated recipe 
 Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 
+<?php
+    require('connectdb.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>

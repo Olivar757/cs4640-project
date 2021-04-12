@@ -5,26 +5,32 @@ Allows the user to log in to the site -->
 <!--- php server side validation WIP ---> 
 
 <?php
+    require('connectdb.php');
     require('account_db.php');
     session_start();
 
     $username = "";
     $password = "";
-    $mainpage = "signup.php"; 
+    $mainpage = "signup.php";
 
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-
-        if (!empty($_POST['submit'])) {
+        if(isset($_POST['username']) && isset($_POST['password'])){
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+        }
+        if(!isset($_SESSION['loggedbool'])) $_SESSION['loggedbool'] = "Login";
+        if (!empty($_POST['login'])) {
+            echo "login not empty<br>";
+            if(validate_login($username, $password) == 1){
+                $_SESSION["user"]=$username;
+                $_SESSION['loggedbool'] = "Account";
+                header("Location:home.php");
             
-            if($_POST['submit'] == 'username'){
-                if(validate_login($username, $password) == 1){
-                    $_SESSION["user"]=$username;
-                    header("Location:recipes.php");
-                }
             }   
         } 
+        if(isset($_SESSION['user'])){
+            echo "user is " . $_SESSION['user'];
+        }
     }  
 ?>
 
@@ -50,16 +56,16 @@ validation code obtained from validate-form-1.html activity 3/02-->
     <div class='r'>    
         <div class='column'id='form'>
         <h2>Welcome Back!</h2>
-        <form method="post" onsubmit="return validateLogIn()">
+        <form method="post">
             <div class ="form-group"> 
                 <!--- js autofocus on the username box so there are less clicks for the user-->
-                Username:<input type="text" id="username" class="form-control"  autofocus placeholder="Enter Your Username"/>
+                Username:<input type="text" name='username' id="username" class="form-control"  autofocus placeholder="Enter Your Username"/>
             </div>
             <div class ="form-group"> 
-                Password:<input type="password" id="password" class="form-control" placeholder="Enter Your Password"/>
+                Password:<input type="password" name='password' id="password" class="form-control" placeholder="Enter Your Password"/>
             </div>
             
-            <input id='sbtn' type="submit" value="Log in" class="btn btn-secondary" />
+            <input id='sbtn' name="login" type="submit" value="Log in" class="btn btn-secondary" />
             <!-- sign up button, will link to a registration page in future implementation-->
             <input id='sbtn' style='width:80px;' name='signup' value="Sign Up" class="btn btn-secondary" onclick="myfunction()"/>
             <script>

@@ -1,7 +1,3 @@
-<?php
-  require('connectdb.php');
-?>
-
 <!--Link to our stylesheet we created-->
 <link rel='stylesheet' href="styles.css">
 
@@ -35,7 +31,11 @@
                 </div>
               </li>
             <li class='nav-item'>
-                <a class='nav-link' href='login.php'>Login</a>
+                <?php if($_SESSION['loggedbool'] == "Login"): ?>
+                  <a class='nav-link' href="login.php">Login</a>
+                <?php elseif($_SESSION['loggedbool'] == "Account"): ?>
+                  <a class='nav-link' href="account.php">My Account</a>
+                <?php endif;?>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='#'>Contact Us</a>
@@ -43,7 +43,11 @@
             <li class='nav-item'>
                 <a class='nav-link' href='#'>About</a>
             </li>
-            <li><a href="account.php" class="nav-link">Account</a></li>
+            <?php if($_SESSION['loggedbool'] == "Account"):?>
+              <li>
+                <a class='nav-link' href="logout.php">Logout</a>
+              </li>
+            <?php endif;?>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
