@@ -20,7 +20,7 @@ Allows the user to log in to the site -->
         }
         if(!isset($_SESSION['loggedbool'])) $_SESSION['loggedbool'] = "Login";
         if (!empty($_POST['login'])) {
-            echo "login not empty<br>";
+           // echo "login not empty<br>";
             if(validate_login($username, $password) == 1){
                 $_SESSION["user"]=$username;
                 $_SESSION['loggedbool'] = "Account";
@@ -31,7 +31,7 @@ Allows the user to log in to the site -->
             }
         } 
         if(isset($_SESSION['user'])){
-            echo "user is " . $_SESSION['user'];
+             echo "user is " . $_SESSION['user'];
         }
     }  
 ?>

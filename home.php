@@ -7,12 +7,12 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
   session_start();
   if(!isset($_SESSION['loggedbool'])) $_SESSION['loggedbool'] = "Login";
   if(isset($_SESSION['user'])){
-    echo $_SESSION['user'] . "<br>";
+   // echo $_SESSION['user'] . "<br>";
     $_SESSION['loggedbool'] = "Account";
   }
   else
     echo "Not logged in";
-  echo $_SESSION['loggedbool'];
+  //echo $_SESSION['loggedbool'];
 ?>
 
 <!DOCTYPE html>
