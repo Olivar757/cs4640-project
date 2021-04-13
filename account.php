@@ -16,6 +16,16 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
             removeFavorite($_POST['delFavorite'], $_SESSION['user']);
             header("Location: account.php");
         }
+        if(!empty($_POST['btnPress']) && $_POST['btnPress'] == "View Recipe"){
+            if($_POST['rid'] == "1"){
+                header("Location: recipe.php");
+                $_SESSION['rid'] = 1;
+            }
+            else{ 
+                header("Location: recipe2.php");
+                $_SESSION['rid'] = 2;
+            }
+        }
     }
 ?>
 
@@ -72,7 +82,7 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
                                     Category: <?php echo $f['category']?>
                                 </div>
                                 <div class="col">
-                                    <form name="mainForm" action="recipe.php" method="post" style='margin-top:2vh;display:inline-block;'>
+                                    <form name="mainForm" method="post" style='margin-top:2vh;display:inline-block;'>
                                         <input type="hidden" name='rid' value="<?php echo $f['rid'] ?>" />
                                         <input id='sbtn' type="submit" value="View Recipe" name="btnPress" class='btn btn-primary'/>
                                     </form>

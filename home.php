@@ -53,7 +53,10 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
           <div class='carousel-recipe'>
             <h2>Tuscan Chicken Skillet</h2>
             <img id='#recipe-1' src='https://food.fnr.sndimg.com/content/dam/images/food/fullset/2018/9/26/0/FNK_Tuscan-Chicken-Skillet_H2_s4x3.jpg.rend.hgtvcom.826.620.suffix/1537973085542.jpeg'>
-            <input type="submit" value="View Recipe" class="btn" /> 
+            <form action="recipe2.php" method='post'>
+              <input type="hidden" name='rid' value="<?php echo 2;?>">
+              <input type="submit" value="View Recipe" class="btn" method='post'/> 
+            </form>
           </div>
           <div class='carousel-recipe'>
             <h2>Blueberry Coffee Cake Muffins</h2>
