@@ -5,8 +5,6 @@
 <!--Link to our stylesheet we created-->
 <link rel='stylesheet' href="styles.css">
 
-<link rel="stylesheet" href="staging.webpl-307703.appspot.com/e53358b41a35f9b1703a35d7e4458dc8d76a6ab0.css">
-
 <!-- We used bootstrap for the navigation bar at
    https://getbootstrap.com/docs/4.0/components/navbar/ -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -38,7 +36,7 @@
               </li>
             <li class='nav-item'>
                 <?php if($_SESSION['loggedbool'] == "Login"): ?>
-                  <a class='nav-link' href="<?php $_SERVER['login']?>">Login</a>
+                  <a class='nav-link' href="login.php">Login</a>
                 <?php elseif($_SESSION['loggedbool'] == "Account"): ?>
                   <a class='nav-link' href="account.php">My Account</a>
                 <?php endif;?>
