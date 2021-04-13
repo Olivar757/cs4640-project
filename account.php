@@ -10,7 +10,7 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
     $info = getMyInfo($_SESSION['user']);
     $favorites = getMyFavorites($_SESSION['user']);
     // echo "<pre>" , var_dump($favorites) , "</pre>";
-
+    $recipes ="";
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         if(!empty($_POST['btnPress']) && $_POST['btnPress'] == "Remove Favorite"){
             removeFavorite($_POST['delFavorite'], $_SESSION['user']);
@@ -53,21 +53,27 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
 				<h5>Email: <?php echo $info[0]['email']?></h5>
                 <input type="submit" id='sbtn'value="Add a recipe" class="btn btn-secondary" onclick="window.location.href='add_recipe.php'"/></div>
 		</div>
-        <div class="container" style='width: 80%;max-width:85%;border-bottom-style:solid;padding-bottom:5vh;'>
-            <h2>My Recipes</h2>
-            <div class="container"> <!-- here we'd access the user's recipes -->
-                <div class="container">
-                    <form action="#" method="post" style='display:inline-block'>
-                        <input id='sbtn' type="submit" value="Edit" name="btnPress" class="btn btn-primary recBtn" title="Update the record"/>
-                        <input type="hidden" name="updateRecipe" value="php echo recipe id here" />
-                    </form>
-                    <form  style='display:inline-block;' action="<?php $_SERVER['PHP_SELF']?>" method="post">
-                        <input id='sbtn red' type="submit" value="Delete" name="btnPress" class="btn btn-danger" title="Permanently delete the record" style='margin-top:2vh;'/>
-                        <input type="hidden" name="delRecipe" value="php echo recipe id here" />
-                    </form>
+        <?php if(!empty($recipes)):?>
+            <div class="container" style='width: 80%;max-width:85%;border-bottom-style:solid;padding-bottom:5vh;'>
+                <h2>My Recipes</h2>
+                <div class="container"> <!-- here we'd access the user's recipes -->
+                    <div class="container">
+                        <form action="#" method="post" style='display:inline-block'>
+                            <input id='sbtn' type="submit" value="Edit" name="btnPress" class="btn btn-primary recBtn" title="Update the record"/>
+                            <input type="hidden" name="updateRecipe" value="php echo recipe id here" />
+                        </form>
+                        <form  style='display:inline-block;' action="<?php $_SERVER['PHP_SELF']?>" method="post">
+                            <input id='sbtn red' type="submit" value="Delete" name="btnPress" class="btn btn-danger" title="Permanently delete the record" style='margin-top:2vh;'/>
+                            <input type="hidden" name="delRecipe" value="php echo recipe id here" />
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php else:?>
+            <div class="container" style='width: 80%;max-width:85%;border-bottom-style:solid;padding-bottom:5vh;'>
+                <h2>You have no recipes!</h2>
+            </div>
+        <?php endif;?>
         <?php if(!empty($favorites)): ?>
             <div class="container" style='width: 80%;max-width:85%;border-bottom-style:solid;padding-bottom:5vh;'>
                 <h2>My Favorites</h2>
@@ -82,12 +88,12 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
                                     Category: <?php echo $f['category']?>
                                 </div>
                                 <div class="col">
-                                    <form name="mainForm" method="post" style='margin-top:2vh;display:inline-block;'>
+                                    <form name="mainForm" method="post" style='margin-top:0;display:inline-block;'>
                                         <input type="hidden" name='rid' value="<?php echo $f['rid'] ?>" />
-                                        <input id='sbtn' type="submit" value="View Recipe" name="btnPress" class='btn btn-primary'/>
+                                        <input id='sbtn' type="submit" value="View Recipe" name="btnPress" style='margin-top:0;' class='btn btn-primary'/>
                                     </form>
-                                    <form style='margin-top:2vh;display:inline-block;' method="post">
-                                        <input id='sbtn red' type="submit" value="Remove Favorite" name="btnPress" class="btn btn-danger" title="Permanently delete the record" style='margin-top:2vh;'/>
+                                    <form style='margin-top:0;display:inline-block;' method="post">
+                                        <input id='sbtn red' style='margin-top:0;' type="submit" value="Remove Favorite" name="btnPress" class="btn btn-danger" title="Permanently delete the record" style='margin-top:2vh;'/>
                                         <input type="hidden" name="delFavorite" value="<?php echo $f['rid']?>" />
                                     </form>
                                 </div>
@@ -95,6 +101,10 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
                         </div>
                     <?php endforeach;?>
                 </div>
+            </div>
+        <?php else:?>
+            <div class="container" style='width: 80%;max-width:85%;border-bottom-style:solid;padding-bottom:5vh;'>
+                <h2>You have no favorites!</h2>
             </div>
         <?php endif;?>
         </div>

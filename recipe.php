@@ -64,7 +64,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
     </div>
     
 <!-- Image of the final recipe -->
-<div class='details'>
+<div class='details' style='width:92.5%;'>
     <div class='photo'>
         <img id="ex" src="https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2018/12/Shakshuka-19-500x500.jpg" alt="Shakshuka"><!--https://downshiftology.com/recipes/shakshuka/-->
     </div>

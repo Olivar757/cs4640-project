@@ -64,7 +64,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
     </div>
     
 <!-- Image of the final recipe -->
-<div class='details'>
+<div class='details' style='width:92.5%;'>
     <div class='photo'>
         <img id="ex" src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2018/9/26/0/FNK_Tuscan-Chicken-Skillet_H2_s4x3.jpg.rend.hgtvcom.826.620.suffix/1537973085542.jpeg" alt="Tuscan Chicken Skillet">
     </div>
