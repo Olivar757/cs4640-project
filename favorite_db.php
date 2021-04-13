@@ -2,26 +2,26 @@
 Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef) 
  -->
 <?php 
-    // function getMyFavorites($sid){
-    //     global $db;
-    //     $query = "SELECT * FROM Favorite CROSS JOIN Property WHERE Favorite.listingID = Property.listingID AND Favorite.sid=:sid";
-    //     $statement = $db->prepare($query); //make an executable version
-    //     $statement->bindValue(':sid', $sid);
-    //     $statement->execute();
-    //     $results = $statement->fetchAll(); //returns an array of all rows from the result that we execute
-    //     $statement->closeCursor();
+    function getMyFavorites($user){
+        global $db;
+        $query = "SELECT * FROM recipes cross join favorites where favorites.rid = recipes.rid and favorites.user =:user";
+        $statement = $db->prepare($query); //make an executable version
+        $statement->bindValue(':user', $user);
+        $statement->execute();
+        $results = $statement->fetchAll(); //returns an array of all rows from the result that we execute
+        $statement->closeCursor();
 
-    //     return $results; 
-    // }
+        return $results; 
+    }
 
     function addToFavorite($user, $rid){
     global $db;
 
-    $query = "CREATE TABLE IF NOT EXISTS `favorites` ( `user` VARCHAR(30) NOT NULL , 'rid' INT NOT NULL )";
+    $query = "CREATE TABLE IF NOT EXISTS favorites ( user VARCHAR(15) NOT NULL , rid INTEGER(11) NOT NULL )";
     $statement = $db->prepare($query);
     $statement->execute();
     $statement->closeCursor();
-    $query = "INSERT INTO Favorite VALUES(:user, :rid)";
+    $query = "INSERT INTO favorites VALUES(:user, :rid)";
     $statement = $db->prepare($query);
     $statement->bindValue(':user', $user);
     $statement->bindValue(':rid', $rid);
@@ -32,29 +32,33 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
     }
 
 
-    // function removeFavorite($sid, $listingID){
-    //     global $db;
-    //     $query = "DELETE FROM Favorite WHERE sid=:sid AND listingID=:listingID";
-    //     $statement = $db->prepare($query);
-    //     $statement->bindValue(':sid', $sid);
-    //     $statement->bindValue(':listingID', $listingID);
-    //     $statement->execute();
+    function removeFavorite($rid, $user){
+        global $db;
+        $query = "DELETE FROM favorites WHERE rid=:rid and user=:user";
+        $statement = $db->prepare($query);
+        $statement->bindValue(':rid', $rid);
+        $statement->bindValue(':user', $user);
+        $statement->execute();
 
-    //     $results = $statement->fetchAll(); // returns an array of rows
-    //     $statement->closeCursor();	
-    // }
+        $results = $statement->fetchAll();
+        $statement->closeCursor();	
+    }
 
-    // function checkFavorite($sid, $listingID){
-    //     global $db;
-    //     $query = "SELECT * FROM Favorite WHERE sid=:sid AND listingID=:listingID";
-    //     $statement = $db->prepare($query);
-    //     $statement->bindValue(':sid', $sid);
-    //     $statement->bindValue(':listingID', $listingID);
-    //     $statement->execute();
+    function checkFavorite($rid, $user){
+    global $db;
 
-    //     $results = $statement->fetchAll(); // returns an array of rows
-    //     $statement->closeCursor();
+    $query = "SELECT * FROM favorites WHERE rid=:rid AND user=:user";
+    $statement = $db->prepare($query);
+    $statement->bindValue(':rid', $rid);
+    $statement->bindValue(':user', $user);
+    $statement->execute();
 
-    //     return $results;	
-    // }
+    $results = $statement->fetchAll(); // returns an array of rows
+    $statement->closeCursor();
+    
+    return $results;
+    
+        
+    }
+
 ?>

@@ -5,13 +5,43 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 <?php
     require('connectdb.php');
     require('favorite_db.php');
+    require('comment_db.php');
     session_start();
 
-    if(!empty($_POST['btnPress']) && ($_POST['btnPress']=='Favorite'))
-	{
-       addToFavorite($_SESSION['user'], $rid);
-       $check = checkFavorite($_SESSION['user'], $rid);
-	}
+    date_default_timezone_set("America/New_York");
+    // echo $_POST['rid'];
+    if(!empty($_POST['rid'])) $_SESSION['rid'] = $_POST['rid'];
+    $rid = $_SESSION['rid'];
+    $comments = getComments($rid);
+    $check = checkFavorite($rid, $_SESSION['user']);
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
+        if(!empty($_POST['btnPress']) && $_POST['btnPress'] == "Favorite"){
+            addToFavorite($_SESSION['user'], $rid);
+            $check = checkFavorite($rid, $_SESSION['user']);
+        }
+        if(!empty($_POST['btnPress']) && $_POST['btnPress'] == "Unfavorite"){
+            removeFavorite($rid, $_SESSION['user']);
+            $check = checkFavorite($rid, $_SESSION['user']);
+        }
+        if(!empty($_POST['btnPress']) && $_POST['btnPress'] == 'Comment'){
+            $comment = $_POST['comment'];
+            addComment($_SESSION['user'], $rid, $comment);
+            header("Location: recipe.php");
+        }
+        if(!empty($_POST['btnPress']) && $_POST['btnPress'] == "Delete Comment"){
+            $comment = $_POST['deleteComment'];
+            deleteComment($comment, $_SESSION['user']);
+            header("Location: recipe.php"); 
+        }
+    }
+    if($_SERVER['REQUEST_METHOD'] == "GET"){
+        if(!empty($_GET['btnPress']) && $_GET['btnPress'] == 'Comment' && !empty($_GET['comment'])){
+            $comment = $_GET['comment'];
+            addComment($_SESSION['user'], $rid, $comment);
+            header('Location: recipe.php');
+        }
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +59,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 
     <!-- Class for the recipe header with the name of the recipe and the contributer, as well as the photo of the recipe-->
     <div class="recipe header">
-        <h1>Shakshuka <p id='heart' style='display:none;color:red;'>&hearts;</p></h1>
+        <h1>Shakshuka <p id='heart' style='color:red;display:inline;'><?php if(!empty($check)) echo "♥";?></p></h1>
         <h3>Recipe Created By: <a href="https://downshiftology.com/recipes/shakshuka/"> Lisa Bryan </a> </h3>
     </div>
     
@@ -59,8 +89,12 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
     <!-- Class for the recipe page functions, such as favorite and print/download-->
     <div class="recipe functions"> 
         <form name="mainForm" onclick="favorite()"; method="post" style='display:inline-block;'>
-            <!-- <input type="hidden" value="<?php echo $p['listingID'] ?>" /> -->
-            <input id='sbtn' type="submit" value="Favorite" name="btnPress" class='btn btn-primary'/>
+            <input type="hidden" name='favoritedRecipe' value="<?php echo $rid ?>" />
+            <?php if(empty($check)):?>
+                <input id='sbtn' type="submit" value="Favorite" name="btnPress" class='btn btn-primary'/>
+            <?php else: ?>
+                <input id='sbtn' type="submit" value="Unfavorite" name="btnPress" class='btn btn-primary'/>
+            <?php endif; ?>
             <input id="sbtn" type="submit" value="Print" onclick="print();" class='btn btn-primary' style='max-width:5vw;'>
         </form>
 
@@ -196,63 +230,46 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
     <div class="comment comment-form"> 
         <h3> Leave a comment!</h3>
         <form>
-            <label>First Name: </label>
-            <input type="text" name="fname" id='first'/> <br/>
-            <label>Last Name:</label>
-            <input type="text" name="lname" id='last'/> <br/>
+            <?php if(!isset($_SESSION['user'])): ?>
+                <label>First Name: </label>
+                <input type="text" name="fname" id='first'/> <br/>
+                <label>Last Name:</label>
+                <input type="text" name="lname" id='last'/> <br/>
+            <?php else: ?>
+                <label>Name: </label>
+                <input type="text" name="name" id='name' value='<?php echo $_SESSION["user"] ?>' disabled/> <br/>
+            <?php endif;?>
             <label>Comment: </label>
             <textarea id='comment' rows="5" cols="40" name="comment"></textarea> <br/>
-             
-            <!-- <input id='sbtn' type="submit" value="Submit" class="btn" onsubmit="comment()"/> -->
-            <h4 id='commentbtn' onclick="comment()">Comment</h4>
+            <!-- <form action="recipe.php" method='post'>
+                <input type="hidden" name='addComment' value='<?php echo $rid?>'>
+                <input id='sbtn' type="submit" value="Comment" name="btnPress" class='btn btn-primary'/>
+            </form> -->
+            <form method='post'>
+                <input type="hidden" name="addComment" value="<?php echo $rid ?>" />
+                <input id='sbtn' type="submit" value="Comment" name="btnPress" class='btn btn-primary'/>
+              </form>
           </form>
     </div>
 
-    <h3 class='commentSection'>Comments from others:</h3>  
-
-    <div class='comments' id='csection'></div>
-
-    <!-- Script for the comment section. Not fully implemented as it needs a database to store comments and such -->
-    <script>
-        function comment(){
-            if(document.getElementById('comment').value == ""){
-                alert("You have to type something in order to leave a comment!");
-                return;
-            }
-            const commentSection = document.createElement('div');
-            commentSection.className = 'comment';
-            const submittedComment = document.createTextNode(document.getElementById("comment").value);
-            const label = document.createElement("h4");
-            var name = 'Anonymous said:';
-            if(document.getElementById('first').value == ''){
-                label.innerText = name;    
-                commentSection.appendChild(label);
-            }
-            else{
-                name = document.getElementById('first').value + " " + document.getElementById('last').value + " said:";
-                label.innerText = name;
-                commentSection.appendChild(label);
-            }
-            commentSection.appendChild(submittedComment);
-            commentSection.appendChild(document.createElement("br"));
-            var d = new Date();
-            var year = d.getFullYear();
-            var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-            var m = months[d.getMonth()];
-            var day = d.getDate();
-            var hr = d.getHours();
-            var min = d.getMinutes();
-            console.log(day);
-            if (min < 10) {
-                min = "0" + min;
-            }
-            const time = document.createElement("p");
-            time.innerText = hr + ":" + min + " on " + m + " " + day + " " + year;
-            time.className = "timeposted";
-            commentSection.appendChild(time);
-            const currentDiv = document.getElementById("csection");
-            document.body.insertBefore(commentSection, currentDiv);
-        }
-    </script>
+    <?php if(!empty($comments)): ?>
+    <h3 class='commentSection'>Comments from others:</h3>
+    <div class='comments' id='csection'>
+        <?php foreach ($comments as $c): ?>
+            <div class="comment">
+                <h4><?php echo $c[0] . " said:"?></h4>
+                <p><?php echo $c[2]?></p>
+                <?php if($_SESSION['user'] == $c[0]): ?>
+                    <form action='recipe.php' method='post'>
+                        <input type="hidden" name='deleteComment' value="<?php echo $c[2]?>" />
+                        <input type='submit' class='btn btn-danger' value="Delete Comment" id='sbtn red' name="btnPress"></input>
+                    </form>
+                <?php endif;?>
+                <br>
+                <p class='timeposted'><?php echo "Posted at " . date("h:i") . " on " . date('m-d-Y');?></p> <!-- "h:i on m d Y" -->
+            </div>
+        <?php endforeach;?>
+    </div>
+    <?php endif;?>
 
 </body>

@@ -5,13 +5,13 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 <?php 
   require('connectdb.php');
   session_start();
+  if(isset($_SESSION['ingredients'])) unset($_SESSION['ingredients']);
+  if(isset($_SESSION['steps'])) unset($_SESSION['steps']);
   if(!isset($_SESSION['loggedbool'])) $_SESSION['loggedbool'] = "Login";
   if(isset($_SESSION['user'])){
    // echo $_SESSION['user'] . "<br>";
     $_SESSION['loggedbool'] = "Account";
   }
-  else
-    echo "Not logged in";
   //echo $_SESSION['loggedbool'];
 ?>
 
@@ -38,7 +38,10 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
         <div class="jtron-text">
           <h1>Top-Rated Recipe</h1>
           <p>This tasty, yet simple top-Rated recipe features delicious ingredients, creating the perfect dish for the whole family.</p>
-          <input style='margin-left:7.5vw;' type="submit" value="View Recipe" class="btn" onclick="window.location.href='recipe.php'"/> <!--- DOM event used to redirect to another page -->
+          <form action="recipe.php" method='post'>
+            <input type="hidden" name='rid' value="<?php echo 1?>">
+            <input style='margin-left:7.5vw;' type="submit" value="View Recipe" class="btn" method='post'/>
+          </form>
         </div>
       </div>
 
