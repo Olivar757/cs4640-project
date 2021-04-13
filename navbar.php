@@ -1,3 +1,12 @@
+<!-- Navigation bar accquired from
+bootstrap for the navigation bar at
+   https://getbootstrap.com/docs/4.0/components/navbar/ 
+
+Includes style sheet created by 
+Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef) 
+to modify the style of the nav bar for our website
+--> 
+
 <?php
   require('connectdb.php');
 ?>

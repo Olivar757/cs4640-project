@@ -2,7 +2,7 @@
 Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef) 
 Allows the user to log in to the site -->
 
-<!--- php server side validation WIP ---> 
+<!--- php server side validation ---> 
 
 <?php
     require('connectdb.php');

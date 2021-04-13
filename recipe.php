@@ -1,5 +1,5 @@
 <!--- 
-Recipe page, showing top rated recipe 
+Recipe page, showing the recipe and all of its details 
 Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 
 <?php

@@ -1,5 +1,5 @@
 <!--- 
-Home Page 
+Home Page, first page the user sees when opening the website
 Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 
 <?php 

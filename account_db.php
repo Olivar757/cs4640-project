@@ -1,3 +1,6 @@
+<!-- Account database queries, addAccount, addAccountInfo, validate_login, getMyInfo
+Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef) 
+ -->
 <?php
 
 

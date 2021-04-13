@@ -1,3 +1,7 @@
+<!-- Comment database queries, addComment, getComments, deleteComment
+for the comment section on the recipe page 
+Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef) 
+ -->
 <?php
     function addComment($user, $rid, $content){
         global $db;

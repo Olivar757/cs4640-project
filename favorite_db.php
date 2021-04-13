@@ -1,4 +1,4 @@
-<!-- Add, remove from favorites DB 
+<!-- Favorite database queries, getMyFavorites, addToFavorites, removeFavorites, checkFavorites
 Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef) 
  -->
 <?php 

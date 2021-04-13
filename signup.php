@@ -1,5 +1,5 @@
 <!--- 
-Signup Page 
+Signup Page, allows the user to sign up and create an account
 Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 
 <?php
@@ -12,7 +12,8 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
     $fname = '';
     $lname = '';
     $email = '';
-
+    
+//constraint check that the password must be at least 8 characters long, include a upper case and a number
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         $username = $_POST['username'];

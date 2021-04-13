@@ -1,3 +1,9 @@
+<!-- Log out page for web app 
+Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef) 
+Allows the user to log out of the site
+displays to the screen that the user is logged out and they have the option 
+to log back in if they need to -->
+
 <?php
 session_start();
 require('connectdb.php');
