@@ -70,17 +70,4 @@ function addAccount($username, $passwrd){
 
     return $results;
   }
-
-  function myInfo($username){
-	global $db;
-	$query = "SELECT * FROM accounts_info WHERE user=:username";
-	$statement = $db->prepare($query); //make an executable version
-	$statement->bindValue(':username', $username);
-	$statement->execute();
-	$results = $statement->fetchAll(); //returns an array of all rows from the result that we execute
-	$statement->closeCursor();
-
-	return $results; 
-}
-
 ?>

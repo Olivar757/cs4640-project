@@ -4,7 +4,14 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 
 <?php
     require('connectdb.php');
+    require('favorite_db.php');
     session_start();
+
+    if(!empty($_POST['btnPress']) && ($_POST['btnPress']=='Favorite'))
+	{
+       addToFavorite($_SESSION['user'], $rid);
+       $check = checkFavorite($_SESSION['user'], $rid);
+	}
 ?>
 
 <!DOCTYPE html>
@@ -51,8 +58,11 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
 
     <!-- Class for the recipe page functions, such as favorite and print/download-->
     <div class="recipe functions"> 
-        <h4 onclick="favorite()"> <a>Favorite</a></h4>
-        <h4 onclick="prnt()"> Print/Download Recipe </h4>
+        <form name="mainForm" onclick="favorite()"; method="post" style='display:inline-block;'>
+            <!-- <input type="hidden" value="<?php echo $p['listingID'] ?>" /> -->
+            <input id='sbtn' type="submit" value="Favorite" name="btnPress" class='btn btn-primary'/>
+            <input id="sbtn" type="submit" value="Print" onclick="print();" class='btn btn-primary' style='max-width:5vw;'>
+        </form>
 
     </div>
 
@@ -64,14 +74,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
         }
         function prnt(){
             window.print();
-        }
-        
-        // document.getElementById("portion").addEventListener("input", portion);
-        
-        // let psize = document.getElementById("portion");
-        // psize.addEventListener('click', portion)
-
-        
+        }    
     </script>
 
     <!-- Class for the recipe ingredients-->

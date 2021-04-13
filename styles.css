@@ -231,6 +231,8 @@ nav {
     margin-right: 7.5vw;
 }
 
-#recBtn {
-
+#del {
+    margin-top: 2vh;
+    color:red;
+    border-color:red;
 }
