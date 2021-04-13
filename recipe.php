@@ -13,7 +13,8 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
     if(!empty($_POST['rid'])) $_SESSION['rid'] = $_POST['rid'];
     $rid = $_SESSION['rid'];
     $comments = getComments($rid);
-    $check = checkFavorite($rid, $_SESSION['user']);
+
+    if(isset($_SESSION['user'])) $check = checkFavorite($rid, $_SESSION['user']);
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         if(!empty($_POST['btnPress']) && $_POST['btnPress'] == "Favorite"){
             addToFavorite($_SESSION['user'], $rid);
@@ -90,9 +91,9 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
     <div class="recipe functions"> 
         <form name="mainForm" onclick="favorite()"; method="post" style='display:inline-block;'>
             <input type="hidden" name='favoritedRecipe' value="<?php echo $rid ?>" />
-            <?php if(empty($check)):?>
+            <?php if(empty($check) && isset($SESSION['user'])):?>
                 <input id='sbtn' type="submit" value="Favorite" name="btnPress" class='btn btn-primary'/>
-            <?php else: ?>
+            <?php elseif(empty($check) && isset($SESSION['user'])): ?>
                 <input id='sbtn' type="submit" value="Unfavorite" name="btnPress" class='btn btn-primary'/>
             <?php endif; ?>
             <input id="sbtn" type="submit" value="Print" onclick="print();" class='btn btn-primary' style='max-width:5vw;'>
@@ -227,6 +228,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
     </div>
 
     <!-- Comment section, code acquired from POTD4 with modifications-->
+    <?php if (isset($_SESSION['user'])):?>
     <div class="comment comment-form"> 
         <h3> Leave a comment!</h3>
         <form>
@@ -251,7 +253,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
               </form>
           </form>
     </div>
-
+    <?php endif;?>
     <?php if(!empty($comments)): ?>
     <h3 class='commentSection'>Comments from others:</h3>
     <div class='comments' id='csection'>
@@ -259,7 +261,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
             <div class="comment">
                 <h4><?php echo $c[0] . " said:"?></h4>
                 <p><?php echo $c[2]?></p>
-                <?php if($_SESSION['user'] == $c[0]): ?>
+                <?php if(isset($SESSION['user']) && $_SESSION['user'] == $c[0]): ?>
                     <form action='recipe.php' method='post'>
                         <input type="hidden" name='deleteComment' value="<?php echo $c[2]?>" />
                         <input type='submit' class='btn btn-danger' value="Delete Comment" id='sbtn red' name="btnPress"></input>
