@@ -28,7 +28,7 @@ to modify the style of the nav bar for our website
     <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
         <ul class='navbar-nav mr-auto'>
             <li class='nav-item active'>
-                <a class='nav-link' href='home.php'>Home<span class='sr-only'>(current)</span></a>
+                <a class='nav-link' href='localhost/capstone/home.php'>Home<span class='sr-only'>(current)</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,7 +51,7 @@ to modify the style of the nav bar for our website
                 <?php endif;?>
             </li>
             <li class='nav-item'>
-                <a class='nav-link' href='#'>Contact Us</a>
+                <a class='nav-link' href='http://localhost:4200'>Contact Us</a>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='#'>About</a>
