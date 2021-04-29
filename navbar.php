@@ -54,7 +54,7 @@ to modify the style of the nav bar for our website
                 <a class='nav-link' href='http://localhost:4200'>Contact Us</a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link' href='#'>About</a>
+                <a class='nav-link' href='about.php'>About</a>
             </li>
             <?php if($_SESSION['loggedbool'] == "Account"):?>
               <li>
