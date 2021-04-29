@@ -1,9 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
 
-import { XyzComponent } from './xyz/xyz.component';
 
 const routes: Routes = [
-    { path: '', component: XyzComponent },
+    {path: '', component: AppComponent},
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

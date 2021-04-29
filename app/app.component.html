@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>{{ title }}</h1>
+  <h1 [style.color]="'green'">{{ title }}</h1>
   <form #orderForm="ngForm" (ngSubmit)="onSubmit(orderForm.value)">
      <div class="form-group">
       <label>Name: </label>
@@ -25,18 +25,28 @@
     </div>
 
     <div class="form-group">
+      <label>Reason for contacting</label>
+      <select required class="custom-select" [(ngModel)]="orderModel.reason" name="reason">
+        <option value="">Why are you trying to contact us?</option>
+        <option *ngFor="let reason of reasons">{{reason}}</option>
+      </select>
+    </div>  
+
+    <div class="form-group">
       <label>Questions/Comments</label>
       <textarea class='form-control' required #content="ngModel" rows="5"
       [(ngModel)]="orderModel.content" name='content'></textarea>
     </div>
 
-    <button class="btn btn-primary" type="submit"
+    <button [ngClass]="'btn'" type="submit"
           [disabled]="!orderForm.form.valid"
           (click)="confirmOrder(orderForm.value)"
           title="always enabled">
       Comment
     </button>
+    <button *ngIf="has_clicked" [ngClass]="'btn ml-2'"><a href="http://localhost/cs4640/home.php" style='color:black;'>Return to the main page</a></button>
   </form>
+  
 
 
 <h2>Message Confirmation</h2>
@@ -47,7 +57,3 @@ Name: {{ orderForm.value.name }}
 Email: {{ orderForm.value.email }}
 <br/>
 Confirmation: {{ confirm_msg }} <br/>
-Data submitted:
-<hr/>
-<!-- <p> Response from PHP: {{ responsedata | json }} </p> -->
-</div>

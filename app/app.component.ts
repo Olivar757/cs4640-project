@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Order } from './order';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-root',
@@ -15,14 +16,16 @@ export class AppComponent {
   title = 'Contact Us';
   author = 'Natalie Novkovic, Noah Dela Rosa';
 
+  reasons = ["Issues with login/signup", "Reset username/password", "Recipe Request", "Change to Recipe", "Other"]
+
   confirm_msg = '';
   data_submitted = '';
-
+  has_clicked = false;
 
   /* create an instance of an Order, assuming there is an existent order */
   /* we will bind orderModel to the form, allowing an update / delete transaction */
   /* orderModel = new Order('duh', 'duh@uva.edu', 1112223333, '', '', true); */
-  orderModel = new Order('', '', '');
+  orderModel = new Order('', '', '', '');
 
   getfromdb(form: any):void{
     this.data_submitted = form;
@@ -35,9 +38,10 @@ export class AppComponent {
      this.confirm_msg = 'Thank you, ' + data.name + " your message was received, we'll follow-up with you as soon as possible!";
   }
 
-  responsedata = new Order('', '', '');
+  responsedata = new Order('', '', '', '');
   // passing in a form variable of type any, no return result
   onSubmit(form: any): void {
+    this.has_clicked = true;
      console.log('You submitted value: ', form);
      this.data_submitted = form;
 

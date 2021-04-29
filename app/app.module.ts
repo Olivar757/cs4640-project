@@ -7,14 +7,12 @@ import { FormsModule } from '@angular/forms';
 
 import { appRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
-import { XyzComponent } from './xyz/xyz.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    XyzComponent,
   ],
   imports: [
     BrowserModule, 
