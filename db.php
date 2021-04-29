@@ -51,16 +51,18 @@ global $db;
 $n =  $data[0]['post_name'];
 $email = $data[0]['post_email'];
 $msg = $data[0]['post_content'];
+$reason = $data[0]['post_reason'];
 // echo $n;
-// $query = "CREATE TABLE IF NOT EXISTS messages ( n VARCHAR(30) NOT NULL , email VARCHAR(30) NOT NULL,  msg VARCHAR(350) NOT NULL";
-// $statement = $db->prepare($query);
-// $statement->execute();
-// $statement->closeCursor();
-$query = "INSERT INTO messages VALUES(:n, :email, :msg)";
+$query = "CREATE TABLE IF NOT EXISTS messages ( n VARCHAR(30) NOT NULL , email VARCHAR(30) NOT NULL,  msg VARCHAR(350) NOT NULL, reason VARCHAR(100) NOT NULL";
+$statement = $db->prepare($query);
+$statement->execute();
+$statement->closeCursor();
+$query = "INSERT INTO messages VALUES(:n, :email, :msg, :reason)";
 $statement = $db->prepare($query);
 $statement->bindValue(':n', $n);
 $statement->bindValue(':email', $email);
 $statement->bindValue(':msg', $msg);
+$statement->bindValue(':reason', $reason);
 $statement->execute(); // run query
 $statement->closeCursor(); //release hold on this connection
 
