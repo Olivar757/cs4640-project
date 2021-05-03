@@ -30,19 +30,6 @@ to modify the style of the nav bar for our website
             <li class='nav-item active'>
                 <a class='nav-link' href='home.php'>Home<span class='sr-only'>(current)</span></a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Recipes
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Vegetarian</a>
-                  <a class="dropdown-item" href="#">Vegan</a>
-                  <a class="dropdown-item" href="#">Dairy-free</a>
-                  <a class="dropdown-item" href="#">Low-budget</a>
-                  <a class="dropdown-item" href="#">Meat Lovers</a>
-                  <a class="dropdown-item" href="#">Dessert</a>
-                </div>
-              </li>
             <li class='nav-item'>
                 <?php if($_SESSION['loggedbool'] == "Login"): ?>
                   <a class='nav-link' href="login.php">Login</a>
