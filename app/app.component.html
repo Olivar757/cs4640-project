@@ -14,24 +14,11 @@
           <li class='nav-item active'>
               <a class='nav-link' href='http://localhost/cs4640/home.php'>Home<span class='sr-only'>(current)</span></a>
           </li>
-          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Recipes
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Vegetarian</a>
-                <a class="dropdown-item" href="#">Vegan</a>
-                <a class="dropdown-item" href="#">Dairy-free</a>
-                <a class="dropdown-item" href="#">Low-budget</a>
-                <a class="dropdown-item" href="#">Meat Lovers</a>
-                <a class="dropdown-item" href="#">Dessert</a>
-              </div>
-            </li>
           <li class='nav-item'>
               <a class='nav-link' href='http://localhost:4200'>Contact Us</a>
           </li>
           <li class='nav-item'>
-              <a class='nav-link' href='#'>About</a>
+              <a class='nav-link' href='http://localhost/cs4640/about.php'>About</a>
           </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
@@ -85,7 +72,7 @@
           [disabled]="!orderForm.form.valid"
           (click)="confirmOrder(orderForm.value)"
           title="always enabled">
-      Comment
+      Submit
     </button>
     <button *ngIf="has_clicked" [ngClass]="'btn ml-2'"><a href="http://localhost/cs4640/home.php" style='color:black;'>Return to the main page</a></button>
   </form>
