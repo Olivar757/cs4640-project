@@ -13,7 +13,8 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
     if(!empty($_POST['rid'])) $_SESSION['rid'] = $_POST['rid'];
     $rid = $_SESSION['rid'];
     $comments = getComments($rid);
-    $check = checkFavorite($rid, $_SESSION['user']);
+    if(isset($_SESSION['user']))
+        $check = checkFavorite($rid, $_SESSION['user']);
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         if(!empty($_POST['btnPress']) && $_POST['btnPress'] == "Favorite"){
             addToFavorite($_SESSION['user'], $rid);
@@ -90,10 +91,12 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
     <div class="recipe functions"> 
         <form name="mainForm" onclick="favorite()"; method="post" style='display:inline-block;'>
             <input type="hidden" name='favoritedRecipe' value="<?php echo $rid ?>" />
-            <?php if(empty($check)):?>
-                <input id='sbtn' type="submit" value="Favorite" name="btnPress" class='btn btn-primary'/>
-            <?php else: ?>
-                <input id='sbtn' type="submit" value="Unfavorite" name="btnPress" class='btn btn-primary'/>
+            <?php if(isset($_SESSION['user'])):?>
+                <?php if(empty($check)):?>
+                    <input id='sbtn' type="submit" value="Favorite" name="btnPress" class='btn btn-primary'/>
+                <?php else: ?>
+                    <input id='sbtn' type="submit" value="Unfavorite" name="btnPress" class='btn btn-primary'/>
+                <?php endif; ?>
             <?php endif; ?>
             <input id="sbtn" type="submit" value="Print" onclick="print();" class='btn btn-primary' style='max-width:5vw;'>
         </form>
