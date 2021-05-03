@@ -37,7 +37,7 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
         </div>
         <div class="jtron-text">
           <h1>Top-Rated Recipe</h1>
-          <p>This tasty, yet simple top-Rated recipe features delicious ingredients, creating the perfect dish for the whole family.</p>
+          <p>This tasty, yet simple top-rated recipe features delicious ingredients, creating the perfect dish for the whole family.</p>
           <form action="recipe.php" method='post'>
             <input type="hidden" name='rid' value="<?php echo 1?>">
             <input style='margin-left:7.5vw;' type="submit" value="View Recipe" class="btn" method='post'/>
