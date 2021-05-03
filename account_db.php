@@ -73,4 +73,40 @@ function addAccount($username, $passwrd){
 
     return $results;
   }
+
+  function getMyRecipes($user){
+    global $db;
+
+    $query = "SELECT * FROM recipe WHERE author=:user";
+    $statement = $db->prepare($query);
+    
+    $statement->bindvalue(':user', $user);
+    $statement->execute();
+    $results = $statement->fetchAll();
+    $statement->closeCursor();
+
+    return $results;
+}
+
+function removeRecipe($rid, $user){
+  global $db;
+  $query = "DELETE FROM recipe WHERE rid=:rid and author=:user";
+  $statement = $db->prepare($query);
+  $statement->bindValue(':rid', $rid);
+  $statement->bindValue(':user', $user);
+  $statement->execute();
+  $statement->closeCursor();	
+}
+
+function getRecipe($rid){
+  global $db; 
+
+  $query = "SELECT * FROM recipe WHERE rid=:rid";
+  $statement = $db->prepare($query);
+  $statement->bindValue(':rid', $rid);
+  $statement->execute();
+  $results = $statement->fetchAll();
+  $statement->closeCursor();
+  return $results;
+}
 ?>

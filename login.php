@@ -30,9 +30,9 @@ Allows the user to log in to the site -->
                 $err = "Your username or password does not match any accounts in our database.";
             }
         } 
-        if(isset($_SESSION['user'])){
-             echo "user is " . $_SESSION['user'];
-        }
+        // if(isset($_SESSION['user'])){
+        //      echo "user is " . $_SESSION['user'];
+        // }
     }  
 ?>
 
