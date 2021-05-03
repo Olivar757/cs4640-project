@@ -29,5 +29,5 @@
             <center><img id="food" src='https://www.helpguide.org/wp-content/uploads/table-with-grains-vegetables-fruit-768.jpg'></center>
         </div>
     </div>
-</body>
+<hr><?php include 'footer.html' ?></body>
 </html>

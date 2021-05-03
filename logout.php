@@ -49,5 +49,5 @@ $_SESSION['loggedbool'] = "Login";
 
 </div>
    
-</body>
+<hr><?php include 'footer.html' ?></body>
 </html>

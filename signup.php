@@ -129,5 +129,5 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
         
         </script>
     </div>
-</body>
+<hr><?php include 'footer.html' ?></body>
 

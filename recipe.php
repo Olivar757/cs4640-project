@@ -275,4 +275,4 @@ Authors: Noah Dela Rosa (nd8ef) and Natalie Novkovic (nn4bk)-->
     </div>
     <?php endif;?>
 
-</body>
+<hr><?php include 'footer.html' ?></body>

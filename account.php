@@ -91,7 +91,7 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
             </div>
         <?php endif;?>
         <?php if(!empty($favorites)): ?>
-            <div class="container" style='width: 80%;max-width:85%;border-bottom-style:solid;padding-bottom:5vh;'>
+            <div class="container" style='width: 80%;max-width:85%;padding-bottom:5vh;'>
                 <h2>My Favorites</h2>
                 <div class="container"> <!-- here would be where we access the favorites and display them -->
                     <?php foreach ($favorites as $f):?>
@@ -119,10 +119,10 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
                 </div>
             </div>
         <?php else:?>
-            <div class="container" style='width: 80%;max-width:85%;border-bottom-style:solid;padding-bottom:5vh;'>
+            <div class="container" style='width: 80%;max-width:85%;padding-bottom:5vh;'>
                 <h2>You have no favorites!</h2>
             </div>
         <?php endif;?>
         </div>
-</body>
+<hr><?php include 'footer.html' ?></body>
 </html>

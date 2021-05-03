@@ -177,5 +177,5 @@
         <?php endforeach;?>
     </div>
     <?php endif;?>
-</body>
+<hr><?php include 'footer.html' ?></body>
 </html>

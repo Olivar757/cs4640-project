@@ -121,5 +121,5 @@ function validateLogIn() {
   </div>
   <?php if(isset($err)){echo "<script>alert('$err')</script>";$err = null; unset($err);}?>
     
-</body>
+<hr><?php include 'footer.html' ?></body>
 </html>

@@ -289,5 +289,5 @@ Authors: Natalie Novkovic (nn4bk) and Noah Dela Rosa (nd8ef)
             </form>
         </div>
     <?php endif; ?>
-</body>
+<hr><?php include 'footer.html' ?></body>
 </html>

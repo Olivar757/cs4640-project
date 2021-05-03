@@ -181,5 +181,5 @@ function deleteData()
 
 
   </div>
-</body>
+<hr><?php include 'footer.html' ?></body>
 </html>
